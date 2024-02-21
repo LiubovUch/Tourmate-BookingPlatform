@@ -3,12 +3,14 @@ using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Assignment1.Controllers
 {
-    public class HotelController : Controller
+    public class CarRentalController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public HotelController(ApplicationDbContext context)
+
+        public CarRentalController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -16,21 +18,19 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var hotels = _context.Hotels.ToList();
-            
-      
-            return View(hotels);
+            var carRentals = _context.CarRentals.ToList();
+            return View(carRentals);
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
-            if (hotels == null)
+            var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
+            if (carRental == null)
             {
                 return NotFound();
             }
-            return View(hotels);
+            return View(carRental);
         }
 
         [HttpGet]
@@ -41,35 +41,33 @@ namespace Assignment1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Hotel hotel)
+        public IActionResult Create(CarRental carRental)
         {
             if (ModelState.IsValid)
             {
-                _context.Hotels.Add(hotel);
+                _context.CarRentals.Add(carRental);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(hotel);
+            return View(carRental);
         }
-
-
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var hotels = _context.Hotels.Find(id);
-            if (hotels == null)
+            var carRental = _context.CarRentals.Find(id);
+            if (carRental == null)
             {
                 return NotFound();
             }
-            return View(hotels);
+            return View(carRental);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("HotelId, Name, Location, Price, Amenities")] Hotel hotels)
+        public IActionResult Edit(int id, [Bind("CarRentalId,CarModel,RentalCompany,Price,AvailabilityStartDate,AvailabilityEndDate")] CarRental carRental)
         {
-            if (id != hotels.HotelId)
+            if (id != carRental.CarRentalId)
             {
                 return NotFound();
             }
@@ -78,12 +76,12 @@ namespace Assignment1.Controllers
             {
                 try
                 {
-                    _context.Update(hotels);
+                    _context.Update(carRental);
                     _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelExists(hotels.HotelId))
+                    if (!CarRentalExists(carRental.CarRentalId))
                     {
                         return NotFound();
                     }
@@ -94,38 +92,38 @@ namespace Assignment1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(hotels);
-        }
-
-        private bool HotelExists(int id)
-        {
-            return _context.Hotels.Any(e => e.HotelId == id);
+            return View(carRental);
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
-            if (hotels == null)
+            var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
+            if (carRental == null)
             {
                 return NotFound();
             }
-            return View(hotels);
-
+            return View(carRental);
         }
 
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int HotelId)
+        public IActionResult DeleteConfirmed(int carRentalId)
         {
-            var hotel = _context.Hotels.Find(HotelId);
-            if (hotel != null)
+            var carRental = _context.CarRentals.Find(carRentalId);
+            if (carRental != null)
             {
-                _context.Hotels.Remove(hotel);
+                _context.CarRentals.Remove(carRental);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();
         }
+
+        private bool CarRentalExists(int id)
+        {
+            return _context.CarRentals.Any(c => c.CarRentalId == id);
+        }
     }
 }
+

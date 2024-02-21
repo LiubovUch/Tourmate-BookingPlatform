@@ -1,0 +1,42 @@
+﻿@model Assignment1.Models.CarRental
+@{
+    ViewData["Title"] = "Edit Car Rental";
+}
+
+<h2>Edit Car Rental</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="CarRentalId" />
+
+    <div class="form-group">
+        <label asp-for="CarModel" class="control-label"></label>
+        <input asp-for="CarModel" class="form-control" />
+        <span asp-validation-for="CarModel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalCompany" class="control-label"></label>
+        <input asp-for="RentalCompany" class="form-control" />
+        <span asp-validation-for="RentalCompany" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AvailabilityStartDate" class="control-label"></label>
+        <input asp-for="AvailabilityStartDate" class="form-control" />
+        <span asp-validation-for="AvailabilityStartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AvailabilityEndDate" class="control-label"></label>
+        <input asp-for="AvailabilityEndDate" class="form-control" />
+        <span asp-validation-for="AvailabilityEndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</form>

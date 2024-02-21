@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Controllers
 {
-    public class HotelController : Controller
+    public class FlightController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public HotelController(ApplicationDbContext context)
+
+        public FlightController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -16,21 +17,19 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var hotels = _context.Hotels.ToList();
-            
-      
-            return View(hotels);
+            var flights = _context.Flights.ToList();
+            return View(flights);
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
-            if (hotels == null)
+            var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
+            if (flight == null)
             {
                 return NotFound();
             }
-            return View(hotels);
+            return View(flight);
         }
 
         [HttpGet]
@@ -41,35 +40,33 @@ namespace Assignment1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Hotel hotel)
+        public IActionResult Create(Flight flight)
         {
             if (ModelState.IsValid)
             {
-                _context.Hotels.Add(hotel);
+                _context.Flights.Add(flight);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(hotel);
+            return View(flight);
         }
-
-
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var hotels = _context.Hotels.Find(id);
-            if (hotels == null)
+            var flight = _context.Flights.Find(id);
+            if (flight == null)
             {
                 return NotFound();
             }
-            return View(hotels);
+            return View(flight);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("HotelId, Name, Location, Price, Amenities")] Hotel hotels)
+        public IActionResult Edit(int id, [Bind("FlightId,Airline,DepartureLocation,ArrivalLocation,DepartureTime,ArrivalTime,Price")] Flight flight)
         {
-            if (id != hotels.HotelId)
+            if (id != flight.FlightId)
             {
                 return NotFound();
             }
@@ -78,12 +75,12 @@ namespace Assignment1.Controllers
             {
                 try
                 {
-                    _context.Update(hotels);
+                    _context.Update(flight);
                     _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelExists(hotels.HotelId))
+                    if (!FlightExists(flight.FlightId))
                     {
                         return NotFound();
                     }
@@ -94,38 +91,37 @@ namespace Assignment1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(hotels);
-        }
-
-        private bool HotelExists(int id)
-        {
-            return _context.Hotels.Any(e => e.HotelId == id);
+            return View(flight);
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
-            if (hotels == null)
+            var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
+            if (flight == null)
             {
                 return NotFound();
             }
-            return View(hotels);
-
+            return View(flight);
         }
 
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int HotelId)
+        public IActionResult DeleteConfirmed(int flightId)
         {
-            var hotel = _context.Hotels.Find(HotelId);
-            if (hotel != null)
+            var flight = _context.Flights.Find(flightId);
+            if (flight != null)
             {
-                _context.Hotels.Remove(hotel);
+                _context.Flights.Remove(flight);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();
+        }
+
+        private bool FlightExists(int id)
+        {
+            return _context.Flights.Any(f => f.FlightId == id);
         }
     }
 }

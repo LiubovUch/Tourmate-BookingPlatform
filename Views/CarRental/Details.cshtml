@@ -1,0 +1,36 @@
+﻿@model Assignment1.Models.CarRental
+@{
+    ViewData["Title"] = "Car Rental Details";
+}
+
+<h2>Car Rental Details</h2>
+
+<div>
+    <h4>Car Rental</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarModel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarModel)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalCompany)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalCompany)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt class="col-sm-2">
+        <a asp-action="Index">Back to List</a>
+</div>
+

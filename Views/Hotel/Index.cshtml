@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Assignment1.Models.Hotel>
 @{
+    ViewData["Title"] = "Hotel List";
+}
+
+<h2>Hotel List</h2>
+<p>
+    <a class="btn btn-primary" asp-controller="Hotel" asp-action="Create">Create Hotel</a>
+</p>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Amenities</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model)
+            {
+                <tr>
+                    <td>@hotel.Name</td>
+                    <td>@hotel.Location</td>
+                    <td>@hotel.Price</td>
+                    <td>@hotel.Amenities</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@hotel.HotelId" class="btn btn-danger">Details</a>
+                        <a asp-action="Edit" asp-route-id="@hotel.HotelId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@hotel.HotelId" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Hotels Available</p>
 }

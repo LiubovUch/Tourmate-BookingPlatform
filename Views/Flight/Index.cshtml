@@ -1,0 +1,49 @@
+﻿@model List<Assignment1.Models.Flight>
+@{
+    ViewData["Title"] = "Flight List";
+}
+
+<h2>Flight List</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create Flight</a>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Departure Location</th>
+                <th>Arrival Location</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.Airline</td>
+                    <td>@flight.DepartureLocation</td>
+                    <td>@flight.ArrivalLocation</td>
+                    <td>@flight.DepartureTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@flight.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@flight.Price</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@flight.FlightId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@flight.FlightId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flights available.</p>
+}

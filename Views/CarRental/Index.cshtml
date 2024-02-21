@@ -1,0 +1,47 @@
+﻿@model List<Assignment1.Models.CarRental>
+@{
+    ViewData["Title"] = "Car Rental List";
+}
+
+<h2>Car Rental List</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create Car Rental</a>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Car Model</th>
+                <th>Rental Company</th>
+                <th>Price</th>
+                <th>Availability Start Date</th>
+                <th>Availability End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carRental in Model)
+            {
+                <tr>
+                    <td>@carRental.CarModel</td>
+                    <td>@carRental.RentalCompany</td>
+                    <td>@carRental.Price</td>
+                    <td>@carRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</td>
+                    <td>@carRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@carRental.CarRentalId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@carRental.CarRentalId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No car rentals available.</p>
+}

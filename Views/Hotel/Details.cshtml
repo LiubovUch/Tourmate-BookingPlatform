@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Assignment1.Models.Hotel
 @{
+    ViewData["Title"] = "Hotel Details";
 }
+
+<h2>Hotel Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@Model.Name</h3>
+        <p class="card-text">Location: @Model.Location</p>
+        <p class="card-text">Price: @Model.Price</p>
+        <p class="card-text">Amenities: @Model.Amenities</p>
+
+        <dl class="row">
+            <dt class="col-sm-3">Hotel ID</dt>
+            <dd class="col-sm-9">@Model.HotelId</dd>
+        </dl>
+
+        <a asp-controller="Hotel" asp-action="Edit" asp-route-id="@Model.HotelId" class="btn btn-primary">Edit</a>
+        <a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</div>

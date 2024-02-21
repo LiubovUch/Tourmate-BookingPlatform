@@ -1,0 +1,37 @@
+﻿@model Assignment1.Models.CarRental
+@{
+    ViewData["Title"] = "Create Car Rental";
+}
+
+<h2>Create Car Rental</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="CarModel" class="control-label"></label>
+        <input asp-for="CarModel" class="form-control" />
+        <span asp-validation-for="CarModel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalCompany" class="control-label"></label>
+        <input asp-for="RentalCompany" class="form-control" />
+        <span asp-validation-for="RentalCompany" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AvailabilityStartDate" class="control-label"></label>
+        <input asp-for="AvailabilityStartDate" class="form-control" />
+        <span asp-validation-for="AvailabilityStartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AvailabilityEndDate" class="control-label"></label>
+        <input asp-for="AvailabilityEndDate" class="form-control" />
+        <span asp-validation-for="AvailabilityEndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

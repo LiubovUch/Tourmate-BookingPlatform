@@ -1,0 +1,42 @@
+﻿@model Assignment1.Models.Flight
+@{
+    ViewData["Title"] = "Create Flight";
+}
+
+<h2>Create Flight</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Airline" class="control-label"></label>
+        <input asp-for="Airline" class="form-control" />
+        <span asp-validation-for="Airline" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartureLocation" class="control-label"></label>
+        <input asp-for="DepartureLocation" class="form-control" />
+        <span asp-validation-for="DepartureLocation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArrivalLocation" class="control-label"></label>
+        <input asp-for="ArrivalLocation" class="form-control" />
+        <span asp-validation-for="ArrivalLocation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartureTime" class="control-label"></label>
+        <input asp-for="DepartureTime" class="form-control" />
+        <span asp-validation-for="DepartureTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ArrivalTime" class="control-label"></label>
+        <input asp-for="ArrivalTime" class="form-control" />
+        <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
