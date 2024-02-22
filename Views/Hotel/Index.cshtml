@@ -1,5 +1,4 @@
-﻿@model List<Assignment1.Models.Hotel>
-@{
+﻿@{
     ViewData["Title"] = "Hotel List";
 }
 
@@ -7,6 +6,27 @@
 <p>
     <a class="btn btn-primary" asp-controller="Hotel" asp-action="Create">Create Hotel</a>
 </p>
+
+<form asp-controller="Hotel" asp-action="Index" method="get">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Search by Name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" id="location" name="location" placeholder="Search by Location">
+        </div>
+        <div class="col">
+            <select class="form-control" id="sortOrder" name="sortOrder">
+                <option value="">Select Order</option>
+                <option value="price_asc">Low to High</option>
+                <option value="price_desc">High to Low</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
 @if (Model.Any())
 {
     <table class="table">
