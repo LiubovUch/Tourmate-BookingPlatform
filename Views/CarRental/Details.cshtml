@@ -33,4 +33,9 @@
         <dt class="col-sm-2">
         <a asp-action="Index">Back to List</a>
 </div>
+@using (Html.BeginForm("Index", "Booking", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.CarRentalId)
+    <input type="submit" value="Book" />
+}
 

@@ -1,0 +1,27 @@
+﻿@model Assignment1.Models.BookingViewModel
+@{
+    ViewBag.Title = "Booking Summary";
+}
+
+<h1>Booking Summary</h1>
+
+@if (Model.SelectedFlight != null)
+{
+    <h2>Selected Flight</h2>
+    <p>Flight Name: @Model.SelectedFlight.DepartureLocation</p>
+    <p>Price: $@Model.SelectedFlight.Airline</p>
+}
+
+@if (Model.SelectedCarRental != null)
+{
+    <h2>Selected Car Rental</h2>
+    <p>Car Model: @Model.SelectedCarRental.CarModel</p>
+    <p>Price Per Day: $@Model.SelectedCarRental.RentalCompany</p>
+}
+
+@if (Model.SelectedHotel != null)
+{
+    <h2>Selected Hotel</h2>
+    <p>Hotel Name: @Model.SelectedHotel.Name</p>
+    <p>Price Per Night: $@Model.SelectedHotel.Location</p>
+}

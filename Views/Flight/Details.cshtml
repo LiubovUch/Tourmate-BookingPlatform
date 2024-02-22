@@ -27,3 +27,8 @@
     </dl>
     <a asp-action="Index">Back to List</a>
 </div>
+@using (Html.BeginForm("Index", "Booking", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.FlightId)
+    <input type="submit" value="Book" />
+}

@@ -50,6 +50,12 @@
                     <td>@hotel.Price</td>
                     <td>@hotel.Amenities</td>
                     <td>
+                        @if (!string.IsNullOrEmpty(hotel.ImageUrl))
+                        {
+                            <img src="@hotel.ImageUrl" alt="Hotel Image" style="max-height: 100px; max-width: 100px;" />
+                        }
+                    </td>
+                    <td>
                         <a asp-action="Details" asp-route-id="@hotel.HotelId" class="btn btn-danger">Details</a>
                         <a asp-action="Edit" asp-route-id="@hotel.HotelId" class="btn btn-secondary">Edit</a>
                         <a asp-action="Delete" asp-route-id="@hotel.HotelId" class="btn btn-danger">Delete</a>

@@ -21,3 +21,8 @@
         <a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary">Back To List</a>
     </div>
 </div>
+@using (Html.BeginForm("Index", "Booking", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.HotelId)
+    <input type="submit" value="Book" />
+}
