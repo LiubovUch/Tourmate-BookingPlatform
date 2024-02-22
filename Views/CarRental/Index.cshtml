@@ -6,8 +6,29 @@
 <h2>Car Rental List</h2>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">Create Car Rental</a>
+    <a class="btn btn-primary" asp-controller="CarRental" asp-action="Create">Create Car Rental</a>
 </p>
+
+<form asp-controller="CarRental" asp-action="Index" method="get">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" id="carModel" name="carModel" placeholder="Search by Model">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" id="rentalCompany" name="company" placeholder="Search by Company">
+        </div>
+        <div class="col">
+            <select class="form-control" id="sortOrder" name="sortOrder">
+                <option value="">Select Order</option>
+                <option value="price_asc">Low to High</option>
+                <option value="price_desc">High to Low</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
 
 @if (Model.Any())
 {
@@ -29,10 +50,10 @@
                     <td>@carRental.CarModel</td>
                     <td>@carRental.RentalCompany</td>
                     <td>@carRental.Price</td>
-                    <td>@carRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</td>
-                    <td>@carRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</td>
+                    <td>@carRental.AvailabilityStartDate.ToShortDateString()</td>
+                    <td>@carRental.AvailabilityEndDate.ToShortDateString()</td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-info">Details</a>
+                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-danger">Details</a>
                         <a asp-action="Edit" asp-route-id="@carRental.CarRentalId" class="btn btn-secondary">Edit</a>
                         <a asp-action="Delete" asp-route-id="@carRental.CarRentalId" class="btn btn-danger">Delete</a>
                     </td>
@@ -43,5 +64,5 @@
 }
 else
 {
-    <p>No car rentals available.</p>
+    <p>No Car Rentals Available</p>
 }

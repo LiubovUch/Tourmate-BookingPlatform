@@ -15,12 +15,40 @@ namespace Assignment1.Controllers
             _context = context;
         }
 
+
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string carModel, string company, string sortOrder)
         {
+            // Retrieve all car rentals from the database
             var carRentals = _context.CarRentals.ToList();
+
+            // Filter car rentals based on search criteria
+            if (!string.IsNullOrEmpty(carModel))
+            {
+                carRentals = carRentals.Where(c => c.CarModel.Contains(carModel)).ToList();
+            }
+            if (!string.IsNullOrEmpty(company))
+            {
+                carRentals = carRentals.Where(c => c.RentalCompany.Contains(company)).ToList();
+            }
+
+            // Sorting logic
+            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
+            switch (sortOrder)
+            {
+                case "price_asc":
+                    carRentals = carRentals.OrderBy(c => c.Price).ToList();
+                    break;
+                case "price_desc":
+                    carRentals = carRentals.OrderByDescending(c => c.Price).ToList();
+                    break;
+                default:
+                    break;
+            }
+
             return View(carRentals);
         }
+
 
         [HttpGet]
         public IActionResult Details(int id)

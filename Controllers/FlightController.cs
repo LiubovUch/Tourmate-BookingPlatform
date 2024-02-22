@@ -15,11 +15,32 @@ namespace Assignment1.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string airline, string departureLocation, string arrivalLocation, DateTime? departureTime)
         {
-            var flights = _context.Flights.ToList();
-            return View(flights);
+            var flights = _context.Flights.AsQueryable();
+
+            // Filter flights based on search criteria
+            if (!string.IsNullOrEmpty(airline))
+            {
+                flights = flights.Where(f => f.Airline.Contains(airline));
+            }
+            if (!string.IsNullOrEmpty(departureLocation))
+            {
+                flights = flights.Where(f => f.DepartureLocation.Contains(departureLocation));
+            }
+            if (!string.IsNullOrEmpty(arrivalLocation))
+            {
+                flights = flights.Where(f => f.ArrivalLocation.Contains(arrivalLocation));
+            }
+            if (departureTime.HasValue)
+            {
+                flights = flights.Where(f => f.DepartureTime.Date == departureTime.Value.Date);
+            }
+
+            var filteredFlights = flights.ToList();
+            return View(filteredFlights);
         }
+
 
         [HttpGet]
         public IActionResult Details(int id)

@@ -14,13 +14,38 @@ namespace Assignment1.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string name, string location, string sortOrder)
         {
+            // Retrieve all hotels from the database
             var hotels = _context.Hotels.ToList();
-            
-      
+
+            // Filter hotels based on search criteria
+            if (!string.IsNullOrEmpty(name))
+            {
+                hotels = hotels.Where(h => h.Name.Contains(name) || h.Location.Contains(name)).ToList();
+            }
+            if (!string.IsNullOrEmpty(location))
+            {
+                hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
+            }
+
+            // Sorting logic
+            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
+            switch (sortOrder)
+            {
+                case "price_asc":
+                    hotels = hotels.OrderBy(h => h.Price).ToList();
+                    break;
+                case "price_desc":
+                    hotels = hotels.OrderByDescending(h => h.Price).ToList();
+                    break;
+                default:
+                    break;
+            }
+
             return View(hotels);
         }
+
 
         [HttpGet]
         public IActionResult Details(int id)
