@@ -19,7 +19,6 @@ namespace Assignment1.Controllers
         {
             var flights = _context.Flights.AsQueryable();
 
-            // Filter flights based on search criteria
             if (!string.IsNullOrEmpty(airline))
             {
                 flights = flights.Where(f => f.Airline.Contains(airline));

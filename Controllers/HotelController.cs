@@ -14,8 +14,6 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Index(string name, string location, string sortOrder)
         {
-            // Retrieve all hotels from the database            
-            // Filter hotels based on search criteria
             var hotels = _context.Hotels.ToList();
             if (!string.IsNullOrEmpty(name))
             {
@@ -25,7 +23,6 @@ namespace Assignment1.Controllers
             {
                 hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
             }
-            // Sorting logic
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : ""; switch (sortOrder)
             {
                 case "price_asc":
@@ -100,8 +97,6 @@ namespace Assignment1.Controllers
                     existingHotel.Location = hotel.Location;
                     existingHotel.Price = hotel.Price;
                     existingHotel.PictureUrl = hotel.PictureUrl;
-
-                    // Update selected amenities
                     existingHotel.Amenities = Amenities != null ? string.Join(",", Amenities) : null;
 
                     _context.Update(existingHotel);

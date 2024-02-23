@@ -19,10 +19,8 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Index(string carModel, string company, string sortOrder)
         {
-            // Retrieve all car rentals from the database
             var carRentals = _context.CarRentals.ToList();
 
-            // Filter car rentals based on search criteria
             if (!string.IsNullOrEmpty(carModel))
             {
                 carRentals = carRentals.Where(c => c.CarModel.Contains(carModel)).ToList();
@@ -32,7 +30,6 @@ namespace Assignment1.Controllers
                 carRentals = carRentals.Where(c => c.RentalCompany.Contains(company)).ToList();
             }
 
-            // Sorting logic
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             switch (sortOrder)
             {
