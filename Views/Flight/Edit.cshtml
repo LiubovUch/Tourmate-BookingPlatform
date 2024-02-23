@@ -2,47 +2,51 @@
 @{
     ViewData["Title"] = "Edit Flight";
 }
-
-<h2>Edit Flight</h2>
-
-<form asp-action="Edit">
-    <input type="hidden" asp-for="FlightId" />
-    <div class="form-group">
-        <label asp-for="Airline" class="control-label"></label>
-        <input asp-for="Airline" class="form-control" />
-        <span asp-validation-for="Airline" class="text-danger"></span>
+<h1 class="text-center">Edit Hotel Information</h1>
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div style="width: 60%;">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="FlightId" />
+                <div class="form-group">
+                    <label asp-for="Airline" class="control-label">Airline:</label>
+                    <input asp-for="Airline" class="form-control" />
+                    <span asp-validation-for="Airline" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartureLocation" class="control-label">Departure Location:</label>
+                    <input asp-for="DepartureLocation" class="form-control" />
+                    <span asp-validation-for="DepartureLocation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ArrivalLocation" class="control-label">Arrival Location:</label>
+                    <input asp-for="ArrivalLocation" class="form-control" />
+                    <span asp-validation-for="ArrivalLocation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartureTime" class="control-label">Departure Time:</label>
+                    <input asp-for="DepartureTime" class="form-control" />
+                    <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ArrivalTime" class="control-label">Arrival Time:</label>
+                    <input asp-for="ArrivalTime" class="form-control" />
+                    <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label">Price:</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center" style="margin-top: 20px;">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Details" asp-route-id="@Model.FlightId" class="btn btn-light">Back to Details</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="DepartureLocation" class="control-label"></label>
-        <input asp-for="DepartureLocation" class="form-control" />
-        <span asp-validation-for="DepartureLocation" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ArrivalLocation" class="control-label"></label>
-        <input asp-for="ArrivalLocation" class="form-control" />
-        <span asp-validation-for="ArrivalLocation" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="DepartureTime" class="control-label"></label>
-        <input asp-for="DepartureTime" class="form-control" />
-        <span asp-validation-for="DepartureTime" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ArrivalTime" class="control-label"></label>
-        <input asp-for="ArrivalTime" class="form-control" />
-        <span asp-validation-for="ArrivalTime" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="control-label"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</form>
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

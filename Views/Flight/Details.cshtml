@@ -3,32 +3,53 @@
     ViewData["Title"] = "Flight Details";
 }
 
-<h2>Flight Details</h2>
+<style>
+    .flight-details {
+        min-height: 300px;
+        overflow-y: auto;
+    }
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">Airline</dt>
-        <dd class="col-sm-10">@Model.Airline</dd>
+    .hotel-image {
+        width: 420px;
+        height: 315px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 20px;
+    }
+</style>
 
-        <dt class="col-sm-2">Departure Location</dt>
-        <dd class="col-sm-10">@Model.DepartureLocation</dd>
+<h1>Flight Details</h1>
 
-        <dt class="col-sm-2">Arrival Location</dt>
-        <dd class="col-sm-10">@Model.ArrivalLocation</dd>
+<div class="row">
+    <div class="col-md-4">
+        <img src="https://images.unsplash.com/photo-1518844826-a4f6afc7a7a8?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="hotel-image" alt="Hotel Image">
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body flight-details">
+                <h3 class="card-title">Airline: @Model.Airline</h3>
+                <p class="card-text"><strong>Departure Location:</strong> @Model.DepartureLocation</p>
+                <p class="card-text"><strong>Arrival Location:</strong> @Model.ArrivalLocation</p>
+                <p class="card-text"><strong>Departure Time:</strong> @Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</p>
+                <p class="card-text"><strong>Arrival Time:</strong> @Model.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</p>
+                <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
 
-        <dt class="col-sm-2">Departure Time</dt>
-        <dd class="col-sm-10">@Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</dd>
-
-        <dt class="col-sm-2">Arrival Time</dt>
-        <dd class="col-sm-10">@Model.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</dd>
-
-        <dt class="col-sm-2">Price</dt>
-        <dd class="col-sm-10">@Model.Price</dd>
-    </dl>
-    <a asp-action="Index">Back to List</a>
+                <div class="btn-group" role="group" aria-label="Flight Actions">
+                    <a asp-action="Edit" asp-route-id="@Model.FlightId" class="btn btn-light">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@Model.FlightId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 @using (Html.BeginForm("Index", "Booking", FormMethod.Post))
 {
     @Html.HiddenFor(model => model.FlightId)
-    <input type="submit" value="Book" />
+    <div class="text-center">
+        <input type="submit" value="Book" class="btn btn-success rounded-pill" style="width: 20%;" />
+    </div>
+    <div class="text-center mt-2">
+        <a asp-action="Index" class="btn btn-light">Back to List</a>
+    </div>
 }

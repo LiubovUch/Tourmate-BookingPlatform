@@ -1,28 +1,53 @@
-﻿@model Assignment1.Models.Hotel
+﻿@model Hotel
 @{
     ViewData["Title"] = "Hotel Details";
 }
 
-<h2>Hotel Details</h2>
+<style>
+    .hotel-image {
+        width: 420px; /* Set the desired width */
+        height: 300px; /* Set the desired height */
+        object-fit: cover; /* Ensure the image covers the specified dimensions */
+        display: block; /* Ensure the image is treated as a block element */
+        margin-bottom: 20px; /* Add some space below the image */
+    }
 
-<div class="card">
-    <div class="card-body">
-        <h3 class="card-title">@Model.Name</h3>
-        <p class="card-text">Location: @Model.Location</p>
-        <p class="card-text">Price: @Model.Price</p>
-        <p class="card-text">Amenities: @Model.Amenities</p>
+    .hotel-details {
+        min-height: 300px; /* Set the desired height */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+    }
+</style>
 
-        <dl class="row">
-            <dt class="col-sm-3">Hotel ID</dt>
-            <dd class="col-sm-9">@Model.HotelId</dd>
-        </dl>
+<h1>Hotel Details</h1>
 
-        <a asp-controller="Hotel" asp-action="Edit" asp-route-id="@Model.HotelId" class="btn btn-primary">Edit</a>
-        <a asp-controller="Hotel" asp-action="Index" class="btn btn-secondary">Back To List</a>
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.PictureUrl" class="hotel-image" alt="Hotel Image">
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body hotel-details">
+                <h3 class="card-title">@Model.Name</h3>
+                <p class="card-text"><strong>Location:</strong> @Model.Location</p>
+                <p class="card-text"><strong>Price per night:</strong> $@Model.Price</p>
+                <p class="card-text"><strong>Amenities:</strong> @Model.Amenities</p>
+
+                <div class="btn-group" role="group" aria-label="Hotel Actions">
+                    <a asp-action="Edit" asp-route-id="@Model.HotelId" class="btn btn-light">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@Model.HotelId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 @using (Html.BeginForm("Index", "Booking", FormMethod.Post))
 {
     @Html.HiddenFor(model => model.HotelId)
-    <input type="submit" value="Book" />
+    <div class="text-center">
+        <input type="submit" value="Book" class="btn btn-success rounded-pill" style="width: 20%;" />
+    </div>
+    <div class="text-center mt-2">
+        <a asp-action="Index" class="btn btn-light">Back to List</a>
+    </div>
 }

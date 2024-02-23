@@ -3,48 +3,68 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    .container {
+        padding: 20px; /* Add some padding */
+        border-radius: 10px; /* Add border radius */
+        width: 50%; /* Set the width */
+        margin: auto; /* Center the container */
+    }
+</style>
 
-<h4>Hotel</h4>
+<h1 class="text-center">Create New Hotel</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amenities" class="control-label"></label>
-                <input asp-for="Amenities" class="form-control" />
-                <span asp-validation-for="Amenities" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div style="width:100%;">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Location" class="control-label"></label>
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Amenities" class="control-label">Amenities:</label>
+                    <div class="form-check">
+                        <input type="checkbox" id="amenity1" name="Amenities" value="Pool" class="form-check-input">
+                        <label for="amenity1" class="form-check-label">Pool</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="amenity2" name="Amenities" value="Gym" class="form-check-input">
+                        <label for="amenity2" class="form-check-label">Gym</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="amenity3" name="Amenities" value="Breakfast" class="form-check-input">
+                        <label for="amenity3" class="form-check-label">Breakfast</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="amenity4" name="Amenities" value="Pet-friendly" class="form-check-input">
+                        <label for="amenity4" class="form-check-label">Pet-friendly</label>
+                    </div>
+                    <span asp-validation-for="Amenities" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="pictureUrl">Picture URL:</label>
+                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl">
+                </div>
+                <div class="form-group text-center" style="margin-top:20px;">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-light">Back to List</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -16,7 +16,6 @@ namespace Assignment1.Models
         public decimal Price { get; set; }
 
         public string? Amenities { get; set; }
-
-        public string? ImageUrl { get; set; }
+        public string? PictureUrl { get; set; }
     }
 }

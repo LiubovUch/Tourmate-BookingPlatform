@@ -2,7 +2,6 @@
 using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 namespace Assignment1.Controllers
 {
     public class HotelController : Controller
@@ -12,72 +11,59 @@ namespace Assignment1.Controllers
         {
             _context = context;
         }
-
         [HttpGet]
         public IActionResult Index(string name, string location, string sortOrder)
         {
-            // Retrieve all hotels from the database
-            var hotels = _context.Hotels.ToList();
-
+            // Retrieve all hotels from the database            
             // Filter hotels based on search criteria
+            var hotels = _context.Hotels.ToList();
             if (!string.IsNullOrEmpty(name))
             {
-                hotels = hotels.Where(h => h.Name.Contains(name) || h.Location.Contains(name)).ToList();
+                hotels = hotels.Where(h => h.Name.Contains(name)).ToList();
             }
             if (!string.IsNullOrEmpty(location))
             {
                 hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
             }
-
             // Sorting logic
-            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
-            switch (sortOrder)
+            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : ""; switch (sortOrder)
             {
                 case "price_asc":
-                    hotels = hotels.OrderBy(h => h.Price).ToList();
-                    break;
+                    hotels = hotels.OrderBy(h => h.Price).ToList(); break;
                 case "price_desc":
                     hotels = hotels.OrderByDescending(h => h.Price).ToList();
                     break;
                 default:
                     break;
             }
-
             return View(hotels);
         }
-
-
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
-            if (hotels == null)
+            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id); if (hotels == null)
             {
                 return NotFound();
             }
             return View(hotels);
         }
-
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Hotel hotel)
+        public IActionResult Create(Hotel hotel, string[] amenities)
         {
             if (ModelState.IsValid)
             {
+                hotel.Amenities = amenities != null ? string.Join(", ", amenities) : null;
                 _context.Hotels.Add(hotel);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                _context.SaveChanges(); return RedirectToAction(nameof(Index));
             }
             return View(hotel);
         }
-
-
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -90,11 +76,12 @@ namespace Assignment1.Controllers
             return View(hotels);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("HotelId, Name, Location, Price, Amenities")] Hotel hotels)
+        public IActionResult Edit(int id, [Bind("HotelId, Name, Location, Price, Amenities, PictureUrl")] Hotel hotel, string[] Amenities)
         {
-            if (id != hotels.HotelId)
+            if (id != hotel.HotelId)
             {
                 return NotFound();
             }
@@ -103,12 +90,27 @@ namespace Assignment1.Controllers
             {
                 try
                 {
-                    _context.Update(hotels);
+                    var existingHotel = _context.Hotels.Find(id);
+                    if (existingHotel == null)
+                    {
+                        return NotFound();
+                    }
+
+                    existingHotel.Name = hotel.Name;
+                    existingHotel.Location = hotel.Location;
+                    existingHotel.Price = hotel.Price;
+                    existingHotel.PictureUrl = hotel.PictureUrl;
+
+                    // Update selected amenities
+                    existingHotel.Amenities = Amenities != null ? string.Join(",", Amenities) : null;
+
+                    _context.Update(existingHotel);
                     _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelExists(hotels.HotelId))
+                    if (!HotelExists(hotel.HotelId))
                     {
                         return NotFound();
                     }
@@ -117,16 +119,17 @@ namespace Assignment1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(hotels);
+            return View(hotel);
         }
+
+
+
 
         private bool HotelExists(int id)
         {
             return _context.Hotels.Any(e => e.HotelId == id);
         }
-
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -136,19 +139,15 @@ namespace Assignment1.Controllers
                 return NotFound();
             }
             return View(hotels);
-
         }
-
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int HotelId)
         {
-            var hotel = _context.Hotels.Find(HotelId);
-            if (hotel != null)
+            var hotel = _context.Hotels.Find(HotelId); if (hotel != null)
             {
                 _context.Hotels.Remove(hotel);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                _context.SaveChanges(); return RedirectToAction(nameof(Index));
             }
             return NotFound();
         }
