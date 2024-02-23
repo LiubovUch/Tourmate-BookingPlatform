@@ -3,39 +3,52 @@
     ViewData["Title"] = "Car Rental Details";
 }
 
+<style>
+    .car-details {
+        min-height: 300px;
+        overflow-y: auto;
+    }
+
+    .car-image {
+        width: 420px;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 20px;
+    }
+</style>
+
 <h2>Car Rental Details</h2>
 
-<div>
-    <h4>Car Rental</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CarModel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CarModel)
-        </dd>
+<div class="row">
+    <div class="col-md-4">
+        <img src="https://images.inc.com/uploaded_files/image/1920x1080/getty_649362670_395940.jpg" class="car-image" alt="Car Rental Image">
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body car-details">
+                <h3 class="card-title">Car Model: @Model.CarModel</h3>
+                <p class="card-text"><strong>Rental Company:</strong> @Model.RentalCompany</p>
+                <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
+                <p class="card-text"><strong>Availability Start Date:</strong> @Model.AvailabilityStartDate</p>
+                <p class="card-text"><strong>Availability End Date:</strong> @Model.AvailabilityEndDate</p>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RentalCompany)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.RentalCompany)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt class="col-sm-2">
-        <a asp-action="Index">Back to List</a>
+                <div class="btn-group" role="group" aria-label="Car Rental Actions">
+                    <a asp-action="Edit" asp-route-id="@Model.CarRentalId" class="btn btn-light">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@Model.CarRentalId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 @using (Html.BeginForm("Index", "Booking", FormMethod.Post))
 {
     @Html.HiddenFor(model => model.CarRentalId)
-    <input type="submit" value="Book" />
+    <div class="text-center mt-2">
+        <input type="submit" value="Book" class="btn btn-success rounded-pill" style="width: 20%;" />
+    </div>
+    <div class="text-center mt-2">
+        <a asp-action="Index" class="btn btn-light">Back to List</a>
+    </div>
 }
-

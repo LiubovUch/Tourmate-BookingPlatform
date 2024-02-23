@@ -3,28 +3,59 @@
     ViewData["Title"] = "Car Rental List";
 }
 
-<h2>Car Rental List</h2>
+<img src="https://media.assets.ansira.net/websites/content/cblt-ms-nissan//39f414af448c484db13471de169ff43c_1598x686.jpg" alt="Car Rental Image" class="car-rental-image">
+<style>
+    /* Styles inspired by Flight page */
+    .car-rental-image {
+        width: 100%; /* Make the image cover the entire width */
+        height: 150px; /* Maintain aspect ratio */
+        margin-top: 20px;
+        margin-bottom: 20px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 
-<p>
-    <a class="btn btn-primary" asp-controller="CarRental" asp-action="Create">Create Car Rental</a>
-</p>
+    .title-bar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        margin-top: 20px;
+    }
+
+    .create-car-rental-btn {
+        margin-top: 20px;
+        margin-left: 10px;
+        padding: 5px 10px; /* Adjust padding for smaller size */
+        font-size: 14px; /* Adjust font size for smaller size */
+    }
+
+    /* Adjust button style */
+    .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="title-bar">
+    <h2 class="title">Car Rental List</h2>
+    <a class="btn btn-outline-secondary create-car-rental-btn" asp-action="Create">Add Car Rental</a>
+</div>
 
 <form asp-controller="CarRental" asp-action="Index" method="get">
     <div class="row">
-        <div class="col">
+        <div class="input-group">
             <input type="text" class="form-control" id="carModel" name="carModel" placeholder="Search by Model">
-        </div>
-        <div class="col">
             <input type="text" class="form-control" id="rentalCompany" name="company" placeholder="Search by Company">
-        </div>
-        <div class="col">
             <select class="form-control" id="sortOrder" name="sortOrder">
                 <option value="">Select Order</option>
                 <option value="price_asc">Low to High</option>
                 <option value="price_desc">High to Low</option>
             </select>
-        </div>
-        <div class="col">
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </div>
@@ -32,37 +63,29 @@
 
 @if (Model.Any())
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Car Model</th>
-                <th>Rental Company</th>
-                <th>Price</th>
-                <th>Availability Start Date</th>
-                <th>Availability End Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var carRental in Model)
-            {
-                <tr>
-                    <td>@carRental.CarModel</td>
-                    <td>@carRental.RentalCompany</td>
-                    <td>@carRental.Price</td>
-                    <td>@carRental.AvailabilityStartDate.ToShortDateString()</td>
-                    <td>@carRental.AvailabilityEndDate.ToShortDateString()</td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-danger">Details</a>
-                        <a asp-action="Edit" asp-route-id="@carRental.CarRentalId" class="btn btn-secondary">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@carRental.CarRentalId" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row mt-4">
+        @foreach (var carRental in Model)
+        {
+            <div class="col-sm-4 mb-4" margin-top="40px">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Model: @carRental.CarModel</h5>
+                        <p class="card-text">Rental Company: @carRental.RentalCompany</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fa-solid fa-hourglass-start"></i> Availability Start Date: @carRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</li>
+                        <li class="list-group-item"><i class="fa-solid fa-hourglass-end"></i> Availability End Date: @carRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</li>
+                        <li class="list-group-item"><i class="fa-solid fa-wallet"></i> Price: $@carRental.Price</li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-success rounded-pill" style="width:30%;">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 }
 else
 {
-    <p>No Car Rentals Available</p>
+    <p>No flights available.</p>
 }

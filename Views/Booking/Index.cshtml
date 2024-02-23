@@ -2,26 +2,78 @@
 @{
     ViewBag.Title = "Booking Summary";
 }
-
-<h1>Booking Summary</h1>
-
+<style>
+    /* Styles inspired by Flight page */
+    .image-thank {
+        width: 100%; /* Make the image cover the entire width */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 20px;
+        margin-bottom: 20px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+</style>
+<h1>Booking Confirmation</h1>
 @if (Model.SelectedFlight != null)
 {
-    <h2>Selected Flight</h2>
-    <p>Flight Name: @Model.SelectedFlight.DepartureLocation</p>
-    <p>Price: $@Model.SelectedFlight.Airline</p>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Airline: @Model.SelectedFlight.Airline</h3>
+                    <p class="card-text"><strong>Departure Location:</strong> @Model.SelectedFlight.DepartureLocation</p>
+                    <p class="card-text"><strong>Arrival Location:</strong> @Model.SelectedFlight.ArrivalLocation</p>
+                    <p class="card-text"><strong>Departure Time:</strong> @Model.SelectedFlight.DepartureTime.ToString("yyyy-MM-dd HH:mm")</p>
+                    <p class="card-text"><strong>Arrival Time:</strong> @Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</p>
+                    <p class="card-text"><strong>Price:</strong> $@Model.SelectedFlight.Price</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="https://i.pinimg.com/originals/fd/28/75/fd2875a58ab0b4c0dfedb69253f5bb8a.png" alt="Thank You!" class="image-thank" />
+        </div>
+    </div>
 }
 
 @if (Model.SelectedCarRental != null)
 {
-    <h2>Selected Car Rental</h2>
-    <p>Car Model: @Model.SelectedCarRental.CarModel</p>
-    <p>Price Per Day: $@Model.SelectedCarRental.RentalCompany</p>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Car Model: @Model.SelectedCarRental.CarModel</h3>
+                    <p class="card-text"><strong>Car Rental:</strong> @Model.SelectedCarRental.RentalCompany</p>
+                    <p class="card-text"><strong>Availability Start Date:</strong> @Model.SelectedCarRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</p>
+                    <p class="card-text"><strong>Availability End Date:</strong> @Model.SelectedCarRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</p>
+                    <p class="card-text"><strong>Price:</strong> $@Model.SelectedCarRental.Price</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="https://i.pinimg.com/originals/fd/28/75/fd2875a58ab0b4c0dfedb69253f5bb8a.png" alt="Thank You!" class="image-thank" />
+        </div>
+    </div>
 }
 
 @if (Model.SelectedHotel != null)
 {
-    <h2>Selected Hotel</h2>
-    <p>Hotel Name: @Model.SelectedHotel.Name</p>
-    <p>Price Per Night: $@Model.SelectedHotel.Location</p>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Hotel Name: @Model.SelectedHotel.Name</h3>
+                    <p class="card-text"><strong>Location:</strong> @Model.SelectedHotel.Location</p>
+                    <p class="card-text"><strong>Price per night:</strong> $@Model.SelectedHotel.Price</p>
+                    <p class="card-text"><strong>Amenities:</strong> @Model.SelectedHotel.Amenities</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="https://i.pinimg.com/originals/fd/28/75/fd2875a58ab0b4c0dfedb69253f5bb8a.png" alt="Thank You!" class="image-thank" />
+        </div>
+    </div>
 }
+
+<div class="text-center mt-2">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-light">Main Menu</a>
+</div>

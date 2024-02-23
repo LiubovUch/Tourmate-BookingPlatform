@@ -3,40 +3,53 @@
     ViewData["Title"] = "Edit Car Rental";
 }
 
-<h2>Edit Car Rental</h2>
+<style>
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+        width: 60%;
+        margin: auto;
+    }
+</style>
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="CarRentalId" />
+<h1 class="text-center">Edit Car Rental</h1>
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div style="width: 100%;">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="CarRentalId" />
 
-    <div class="form-group">
-        <label asp-for="CarModel" class="control-label"></label>
-        <input asp-for="CarModel" class="form-control" />
-        <span asp-validation-for="CarModel" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="CarModel" class="control-label">Car Model:</label>
+                    <input asp-for="CarModel" class="form-control" />
+                    <span asp-validation-for="CarModel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentalCompany" class="control-label">Rental Company:</label>
+                    <input asp-for="RentalCompany" class="form-control" />
+                    <span asp-validation-for="RentalCompany" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label">Price:</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AvailabilityStartDate" class="control-label">Availability Start Date:</label>
+                    <input asp-for="AvailabilityStartDate" class="form-control" />
+                    <span asp-validation-for="AvailabilityStartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AvailabilityEndDate" class="control-label">Availability End Date:</label>
+                    <input asp-for="AvailabilityEndDate" class="form-control" />
+                    <span asp-validation-for="AvailabilityEndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center" style="margin-top: 20px;">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Details" asp-route-id="@Model.CarRentalId" class="btn btn-light">Back to Details</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="RentalCompany" class="control-label"></label>
-        <input asp-for="RentalCompany" class="form-control" />
-        <span asp-validation-for="RentalCompany" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="control-label"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AvailabilityStartDate" class="control-label"></label>
-        <input asp-for="AvailabilityStartDate" class="form-control" />
-        <span asp-validation-for="AvailabilityStartDate" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AvailabilityEndDate" class="control-label"></label>
-        <input asp-for="AvailabilityEndDate" class="form-control" />
-        <span asp-validation-for="AvailabilityEndDate" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-</form>
+</div>
