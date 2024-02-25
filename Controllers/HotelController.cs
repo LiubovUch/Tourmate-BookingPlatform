@@ -11,6 +11,8 @@ namespace Assignment1.Controllers
         {
             _context = context;
         }
+
+
         [HttpGet]
         public IActionResult Index(string name, string location, string sortOrder)
         {
@@ -23,7 +25,9 @@ namespace Assignment1.Controllers
             {
                 hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
             }
-            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : ""; switch (sortOrder)
+
+            ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : ""; 
+            switch (sortOrder)
             {
                 case "price_asc":
                     hotels = hotels.OrderBy(h => h.Price).ToList(); break;
@@ -35,20 +39,25 @@ namespace Assignment1.Controllers
             }
             return View(hotels);
         }
+
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id); if (hotels == null)
+            var hotels = _context.Hotels.FirstOrDefault(p => p.HotelId == id); 
+            if (hotels == null)
             {
                 return NotFound();
             }
             return View(hotels);
         }
+
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Hotel hotel, string[] amenities)
@@ -118,13 +127,12 @@ namespace Assignment1.Controllers
             return View(hotel);
         }
 
-
-
-
         private bool HotelExists(int id)
         {
             return _context.Hotels.Any(e => e.HotelId == id);
         }
+
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -135,6 +143,8 @@ namespace Assignment1.Controllers
             }
             return View(hotels);
         }
+
+
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int HotelId)
