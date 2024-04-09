@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Assignment1.Models
+namespace Assignment1.Areas.BookingManagement.Models
 {
     public class Flight
     {

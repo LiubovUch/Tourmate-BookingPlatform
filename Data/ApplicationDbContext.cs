@@ -1,4 +1,4 @@
-﻿using Assignment1.Models;
+﻿using Assignment1.Areas.BookingManagement.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment1.Data

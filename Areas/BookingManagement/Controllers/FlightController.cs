@@ -1,10 +1,13 @@
-﻿using Assignment1.Data;
-using Assignment1.Models;
+﻿using Assignment1.Areas.BookingManagement.Models;
+using Assignment1.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
-namespace Assignment1.Controllers
+namespace Assignment1.Areas.BookingManagement.Controllers
 {
+    [Area("BookingManagement")]
+    [Route("[area]/[controller]")]
     public class FlightController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -40,8 +43,7 @@ namespace Assignment1.Controllers
             return View(filteredFlights);
         }
 
-
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public IActionResult Details(int id)
         {
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
@@ -52,13 +54,13 @@ namespace Assignment1.Controllers
             return View(flight);
         }
 
-        [HttpGet]
+        [HttpGet("Create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Flight flight)
         {
@@ -71,7 +73,7 @@ namespace Assignment1.Controllers
             return View(flight);
         }
 
-        [HttpGet]
+        [HttpGet("Edit/{id:int}")]
         public IActionResult Edit(int id)
         {
             var flight = _context.Flights.Find(id);
@@ -82,7 +84,7 @@ namespace Assignment1.Controllers
             return View(flight);
         }
 
-        [HttpPost]
+        [HttpPost("Edit/{id:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("FlightId,Airline,DepartureLocation,ArrivalLocation,DepartureTime,ArrivalTime,Price")] Flight flight)
         {
@@ -114,7 +116,7 @@ namespace Assignment1.Controllers
             return View(flight);
         }
 
-        [HttpGet]
+        [HttpGet("Delete/{id:int}")]
         public IActionResult Delete(int id)
         {
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
@@ -125,7 +127,7 @@ namespace Assignment1.Controllers
             return View(flight);
         }
 
-        [HttpPost, ActionName("DeleteConfirmed")]
+        [HttpPost("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int flightId)
         {

@@ -1,9 +1,11 @@
 ﻿using Assignment1.Data;
-using Assignment1.Models;
+using Assignment1.Areas.BookingManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Assignment1.Controllers
+namespace Assignment1.Areas.BookingManagement.Controllers
 {
+    [Area("BookingManagement")]
+    [Route("[area]/[controller]/[action]")]
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;

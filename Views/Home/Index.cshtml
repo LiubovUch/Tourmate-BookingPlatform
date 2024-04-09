@@ -65,14 +65,21 @@
 
 <div class="img-container-row text-center mt-5">
     <div class="img-container">
-        <button class="centered btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Hotel")'"> <i class="fa-solid fa-bed"> </i>&nbsp; Book Hotel</button>
+        <button class="centered btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Hotel", new { area = "BookingManagement" })'">
+            <i class="fa-solid fa-bed"></i>&nbsp; Book Hotel
+        </button>
     </div>
 
     <div class="img-container">
-        <button class="centered btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Flight")'"> <i class="fa-solid fa-map-location"> </i> &nbsp;Choose Flight</button>
+        <button class="centered btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "Flight", new { area = "BookingManagement" })'">
+            <i class="fa-solid fa-map-location"></i>&nbsp; Choose Flight
+        </button>
     </div>
 
     <div class="img-container">
-        <button class="centered btn  btn-outline-secondary" onclick="location.href='@Url.Action("Index", "CarRental")'"> <i class="fa-solid fa-car-side"> </i> &nbsp; Rent Car</button>
+        <button class="centered btn btn-outline-secondary" onclick="location.href='@Url.Action("Index", "CarRental", new { area = "BookingManagement" })'">
+            <i class="fa-solid fa-car-side"></i>&nbsp; Rent Car
+        </button>
     </div>
 </div>
+

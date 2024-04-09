@@ -1,11 +1,12 @@
-﻿using Assignment1.Data;
-using Assignment1.Models;
+﻿using Assignment1.Areas.BookingManagement.Models;
+using Assignment1.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace Assignment1.Controllers
+namespace Assignment1.Areas.BookingManagement.Controllers
 {
+    [Area("BookingManagement")]
+    [Route("[area]/[controller]")]
     public class CarRentalController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -14,7 +15,6 @@ namespace Assignment1.Controllers
         {
             _context = context;
         }
-
 
         [HttpGet]
         public IActionResult Index(string carModel, string company, string sortOrder)
@@ -46,8 +46,7 @@ namespace Assignment1.Controllers
             return View(carRentals);
         }
 
-
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public IActionResult Details(int id)
         {
             var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
@@ -58,13 +57,13 @@ namespace Assignment1.Controllers
             return View(carRental);
         }
 
-        [HttpGet]
+        [HttpGet("Create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CarRental carRental)
         {
@@ -77,7 +76,7 @@ namespace Assignment1.Controllers
             return View(carRental);
         }
 
-        [HttpGet]
+        [HttpGet("Edit/{id:int}")]
         public IActionResult Edit(int id)
         {
             var carRental = _context.CarRentals.Find(id);
@@ -88,7 +87,7 @@ namespace Assignment1.Controllers
             return View(carRental);
         }
 
-        [HttpPost]
+        [HttpPost("Edit/{id:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("CarRentalId,CarModel,RentalCompany,Price,AvailabilityStartDate,AvailabilityEndDate")] CarRental carRental)
         {
@@ -120,7 +119,7 @@ namespace Assignment1.Controllers
             return View(carRental);
         }
 
-        [HttpGet]
+        [HttpGet("Delete/{id:int}")]
         public IActionResult Delete(int id)
         {
             var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
@@ -131,7 +130,7 @@ namespace Assignment1.Controllers
             return View(carRental);
         }
 
-        [HttpPost, ActionName("DeleteConfirmed")]
+        [HttpPost("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int carRentalId)
         {
@@ -151,4 +150,3 @@ namespace Assignment1.Controllers
         }
     }
 }
-
