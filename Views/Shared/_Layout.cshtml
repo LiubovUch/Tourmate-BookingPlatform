@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Assignment1.Areas.BookingManagement.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,6 +35,40 @@
                         </li>
 
 
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            //PGLHBCKE6QWRPMLHDA4X79N8 -recovery send grid
+                            //profile
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage your account">
+                                    <i class="fa-solid fa-user"></i>Profile
+                                </a>
+                            </li>
+
+
+                            //logout
+                            <li class="nav-item">
+                                <form asp-area="Identity" asp-page="/Account/Logout" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark" style="cursor:pointer"><i class="fa-solid fa-door-open"></i>Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            //login
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
+                                    <i class="fa-solid fa-right-to-bracket"></i>Login
+                                </a>
+                            </li>
+
+                            //register
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
+                                    <i class="fa-regular fa-id-card"></i>Register
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

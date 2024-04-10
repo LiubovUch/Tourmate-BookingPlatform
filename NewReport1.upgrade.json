@@ -1,0 +1,2262 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "",
+    "targetDisplayName": ".NET 8.0"
+  },
+  "analysisStartTime": "2024-04-09T20:17:07.4785601Z",
+  "analysisEndTime": "2024-04-09T20:17:09.1534481Z",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 3,
+      "incidents": 111,
+      "effort": 111
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 107,
+        "Optional": 0,
+        "Potential": 4,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 4,
+        "Project": 1,
+        "Api": 106
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 111,
+      "ruleInstances": [
+        {
+          "incidentId": "f1714f96-dabd-49ef-bc67-d207978307c1",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.VisualStudio.Web.CodeGeneration.Design, 7.0.12",
+            "snippet": "Microsoft.VisualStudio.Web.CodeGeneration.Design, 7.0.12\n\nRecommendation:\n\nMicrosoft.VisualStudio.Web.CodeGeneration.Design 8.0.2"
+          }
+        },
+        {
+          "incidentId": "6630ddfa-141d-43bf-9a13-ed38a9054d82",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore, 7.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore, 7.0.0\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore 8.0.4"
+          }
+        },
+        {
+          "incidentId": "b96ee457-5c39-47e9-81ba-a36d748d785d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 7.0.0\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.SqlServer 8.0.4"
+          }
+        },
+        {
+          "incidentId": "7f2a343a-dbe9-4f97-a156-16c97c803bd6",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.Tools, 7.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 7.0.0\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Tools 8.0.4"
+          }
+        },
+        {
+          "incidentId": "5b5f959a-c412-40ec-93e7-09d96f2d7a9f",
+          "ruleId": "Project.0002",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+            "snippet": "Current: net7.0\nNew: net8.0"
+          }
+        },
+        {
+          "incidentId": "81ef9761-eb87-4614-9f2f-b975ac1f8e78",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022DepartureTime\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 80,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "22450827-a887-48a1-8862-08dccf2e3143",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022DepartureTime\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 77,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "87693dcf-2bf9-4cd6-87b8-957cfcb07f7b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022ArrivalTime\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 70,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "3ef90bd3-2000-43c6-9ae6-bd0778a91d9d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.ToTable(\u0022CarRentals\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 51,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "ccd5ad88-f86d-49d0-a164-176e261524b1",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022AvailabilityEndDate\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 35,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "afcb5cc5-ffb2-4e6e-8cb7-e7e7caeb68b2",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Program.cs",
+            "snippet": "builder.Services.AddDbContext\u003CApplicationDbContext\u003E(options =\u003E\r\n                options.UseSqlServer(builder.Configuration.GetConnectionString(\u0022DefaultConnection\u0022)))\n\nAPI signature M:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f46e2fde-520b-4ca0-a18c-fd47c5944a17",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\CarRentalController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 103,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "eabf19d2-7d79-46b0-b1dc-746c1186c1dc",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003CDateTime\u003E(type: \u0022datetime2\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f3a74e00-fd5a-4a07-9988-136824b571a6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "modelBuilder\r\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00227.0.0\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 18,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "8b5226a8-53aa-4adc-862f-2e4898e5e546",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.Flight\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022FlightId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022FlightId\u0022));\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Airline\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022ArrivalLocation\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022ArrivalTime\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022DepartureLocation\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022DepartureTime\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.HasKey(\u0022FlightId\u0022);\r\n\r\n                    b.ToTable(\u0022Flights\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 57,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "cc239eb6-a6da-4760-8fa3-e1dcd9ab030a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.SqlServer, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder)\n\nAPI signature M:Microsoft.EntityFrameworkCore.SqlServerModelBuilderExtensions.UseIdentityColumns(Microsoft.EntityFrameworkCore.ModelBuilder,System.Int64,System.Int32)",
+            "line": 25,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.sqlservermodelbuilderextensions.useidentitycolumns"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "816e9682-1762-44e9-97d5-9f0d03f10176",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.SqlServer, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Program.cs",
+            "snippet": "options.UseSqlServer(builder.Configuration.GetConnectionString(\u0022DefaultConnection\u0022))\n\nAPI signature M:Microsoft.EntityFrameworkCore.SqlServerDbContextOptionsExtensions.UseSqlServer(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.String,System.Action{Microsoft.EntityFrameworkCore.Infrastructure.SqlServerDbContextOptionsBuilder})",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.sqlserverdbcontextoptionsextensions.usesqlserver"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f256ef8b-b85f-4c22-979e-a763448e3e97",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "DbContext(typeof(ApplicationDbContext))\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.DbContextAttribute",
+            "line": 13,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.dbcontextattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "7972cdea-729d-4d6b-8293-74b3df30ae51",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 45,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "603c8bc5-34e4-4b11-af93-4e5600987932",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.cs",
+            "snippet": "Migration\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.Migration",
+            "line": 7,
+            "column": 38,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "3d7579b8-60a1-4162-ade9-f25dc112adeb",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.CarRental\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022CarRentalId\u0022));\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022AvailabilityEndDate\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022AvailabilityStartDate\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022CarModel\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022RentalCompany\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.HasKey(\u0022CarRentalId\u0022);\r\n\r\n                    b.ToTable(\u0022CarRentals\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 27,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "aee234d2-faf7-44d0-a864-7d21670fd7c7",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "migrationBuilder.DropTable(\r\n                name: \u0022Flights\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(System.String,System.String)",
+            "line": 71,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.droptable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "5d6b4a8b-7d0d-458f-b184-41ea6851ff97",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cstring\u003E(type: \u0022nvarchar(max)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 30,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "67ab9323-3aef-4d12-83a6-53c17267b861",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022RentalCompany\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 45,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "89b4659c-bc4f-4a8e-b17c-f40d5cec511f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 93,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "bcee84df-6d31-4082-aea1-f96de324e3da",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.cs",
+            "snippet": "migrationBuilder.AddColumn\u003Cstring\u003E(\r\n                name: \u0022PictureUrl\u0022,\r\n                table: \u0022Hotels\u0022,\r\n                type: \u0022nvarchar(max)\u0022,\r\n                nullable: true)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.AddColumn\u0060\u00601(System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 12,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.addcolumn"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "3980b36c-193e-4975-9c8c-4757b488f1e7",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cstring\u003E(type: \u0022nvarchar(max)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "97267e8e-8647-4233-844e-1c2ff5b3cbb4",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.cs",
+            "snippet": "migrationBuilder.DropColumn(\r\n                name: \u0022PictureUrl\u0022,\r\n                table: \u0022Hotels\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropColumn(System.String,System.String,System.String)",
+            "line": 22,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.dropcolumn"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "c5156f8a-1d51-407e-be0b-97ff4efeecc8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "modelBuilder\r\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00227.0.0\u0022)\r\n                .HasAnnotation(\u0022Relational:MaxIdentifierLength\u0022, 128)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 21,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "34dfc317-46cd-43ac-8bd8-7cc546b42dbc",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.ToTable(\u0022CarRentals\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 54,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "cf8ff9ef-48d1-49fe-84cc-55134e370460",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "modelBuilder\r\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00227.0.0\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 21,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "cd8fde39-0a37-42bf-b002-e08081346eb1",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.Hotel\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022HotelId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022HotelId\u0022));\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Amenities\u0022)\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Location\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Name\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022PictureUrl\u0022)\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.HasKey(\u0022HotelId\u0022);\r\n\r\n                    b.ToTable(\u0022Hotels\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 91,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "5d95f941-bed9-4b40-ad28-882dc6f98252",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022ArrivalTime\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 73,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "07fef193-1804-48ef-b437-5c512f248ee5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Name\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 106,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4e5d9f0c-ba09-481b-bcba-463459f467f0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 29,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0a99d1db-12c0-4e45-9d24-b543040df369",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 94,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "353d38ba-6c51-47bd-88ad-de54372c672b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.Hotel\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022HotelId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022HotelId\u0022));\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Amenities\u0022)\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Location\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Name\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022PictureUrl\u0022)\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.HasKey(\u0022HotelId\u0022);\r\n\r\n                    b.ToTable(\u0022Hotels\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 88,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f61a78d8-8979-4f36-adfe-6399a2c25a89",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 42,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f9ac3a8d-6cd0-419f-9ba7-9de5cd64c8df",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 33,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "ba1ff9cb-5c85-451f-8358-716aaf5bdc99",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\CarRentalController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 72,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4472a5e4-5376-44bf-bbfb-e1b775eb4b91",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.HasKey(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 116,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "6138dba6-ba89-4abc-b296-c28159c5f407",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022AvailabilityStartDate\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 38,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "d9be53d3-7a60-4f41-aa9a-eb4cc1584b11",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.HasKey(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 83,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "8a2978b2-acb0-48b8-ad12-50af1d051920",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.SqlServer, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder)\n\nAPI signature M:Microsoft.EntityFrameworkCore.SqlServerModelBuilderExtensions.UseIdentityColumns(Microsoft.EntityFrameworkCore.ModelBuilder,System.Int64,System.Int32)",
+            "line": 22,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.sqlservermodelbuilderextensions.useidentitycolumns"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "9aa9b7f1-67b4-4453-9c92-0b6f84c1e0d6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022CarModel\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 41,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "45024f0a-3312-4644-b1e1-9c8d464475a0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022RentalCompany\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 48,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "ae69a517-43ed-4752-9dbf-b527bb830c1d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cdecimal\u003E(type: \u0022decimal(18,2)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 48,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "96d51f92-1db6-4ff4-b2eb-68cf5506e7b1",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 30,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a8c7b9f1-36d0-442d-ae7d-a89f06a41b21",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 113,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "fc385a5a-ac24-4442-a131-dd6c57f72981",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.HasKey(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 52,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "2acfedb3-1d1a-4ffb-bc41-bef70e2872c2",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Data\\ApplicationDbContext.cs",
+            "snippet": "DbContext\n\nAPI signature T:Microsoft.EntityFrameworkCore.DbContext",
+            "line": 5,
+            "column": 40,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "157c4850-5934-4d15-b9dd-212fd329483d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 83,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4c78808a-4c7f-45a5-a6e8-8dd9667208af",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "modelBuilder\r\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00227.0.0\u0022)\r\n                .HasAnnotation(\u0022Relational:MaxIdentifierLength\u0022, 128)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 18,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "b7ae6cc0-eb90-4570-a83e-af58095624a1",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Airline\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 65,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a1f31328-8ab0-4802-97cf-eaee544c13e0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 59,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "da997aa6-25ad-45d5-80f0-422ce8a10e94",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "migrationBuilder.DropTable(\r\n                name: \u0022CarRentals\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(System.String,System.String)",
+            "line": 68,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.droptable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "40695402-33dd-4508-a8ee-41ff93177dfd",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 63,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f996b936-8c73-402e-b1ca-456d3bcd7f19",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\FlightController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 100,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "49331beb-abdc-4483-b881-a9fb69e2f98b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003CDateTime\u003E(type: \u0022datetime2\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 30,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1bfbcec4-21c6-4e80-a8ae-098d8e2790ec",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 80,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "301b4374-97a6-4512-a96c-0cb4ed0a52ea",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022AvailabilityEndDate\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 32,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f3169e5d-fb36-4114-9593-b8d72689116c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022ArrivalLocation\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 69,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "30606a67-227b-4ffb-8074-03fdc023789c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\HotelController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 74,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "263ff4b3-686e-4bed-9f51-6176e6cfa944",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.ToTable(\u0022Flights\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 88,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "eaaa4dad-759c-4cd7-99f7-8f74aa0f0650",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022DepartureLocation\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 76,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0113a709-5fe5-4182-8bb4-dd1e512dd1c9",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 110,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0036d51b-59e3-43a2-b49b-c1cf79b5f8e0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Location\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 102,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "aad74d49-bf3a-49d5-a46b-7e4f5001395f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "ModelSnapshot\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.ModelSnapshot",
+            "line": 13,
+            "column": 54,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.modelsnapshot"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "5ba89bde-78ce-4545-b6e1-c9d270690b94",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\FlightController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 69,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1728613d-a912-48b2-be95-d13553ab325a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022DepartureLocation\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 73,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "82976803-dad4-40e0-8083-3e774df89b97",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022CarModel\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 38,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "11becc9d-4b8c-4933-aa1a-3ce0fcaeb87b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.HasKey(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 86,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "d91999a9-b028-4e56-9b77-67ff34df0eac",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.ToTable(\u0022Hotels\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 115,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "e2d72537-fd51-42ec-9032-d6ad1a5a0594",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\HotelController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 117,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0179f61d-d75d-4841-9a5f-f2c3223734bc",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cstring\u003E(type: \u0022nvarchar(max)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 48,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "e3ff435e-c286-4052-ba91-3b19d499cdc2",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.ToTable(\u0022Flights\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 85,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "b2b529c6-9cb3-434f-9c9a-92a557dc2e63",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022AvailabilityStartDate\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 35,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "ce5d32a1-c4cc-4ebe-91d5-056586df73b5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 97,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "00490d49-4a05-491a-adef-aa4440356ad3",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "b.HasKey(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 113,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a0f8a254-ca8b-4c18-a4c0-fafb213cca87",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 60,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "cf46c4bd-4cab-47b6-8ab6-182c43d6288f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.Flight\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022FlightId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022FlightId\u0022));\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Airline\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022ArrivalLocation\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022ArrivalTime\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022DepartureLocation\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022DepartureTime\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.HasKey(\u0022FlightId\u0022);\r\n\r\n                    b.ToTable(\u0022Flights\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 54,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "7dcaf177-fede-4972-baa2-e80d402bf64d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Amenities\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 99,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "32e94826-493b-4a9d-aef6-08d41a0835c6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Amenities\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 96,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1531bdd9-2c2d-492f-a97b-f68c80f57138",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cdecimal\u003E(type: \u0022decimal(18,2)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "331548e2-fe10-4910-b428-373620ff883f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022PictureUrl\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 110,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "fdc57c11-4a0b-469d-927b-e7b835b2dca6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022ArrivalLocation\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 66,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "d2a1aea4-42fa-45b2-9556-3b7ec8fd44e7",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 26,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "78677db4-a8b1-4351-a29a-d72db36b2d46",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "b.ToTable(\u0022Hotels\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 118,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "b8be1e10-bf28-4593-83e8-ada46edcfa50",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.CarRental\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022CarRentalId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022CarRentalId\u0022));\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022AvailabilityEndDate\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003CDateTime\u003E(\u0022AvailabilityStartDate\u0022)\r\n                        .HasColumnType(\u0022datetime2\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022CarModel\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022RentalCompany\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.HasKey(\u0022CarRentalId\u0022);\r\n\r\n                    b.ToTable(\u0022CarRentals\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 24,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "c770162e-3321-4436-bb84-e19d158fd78c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240223180840_PictureUrl.Designer.cs",
+            "snippet": "Migration(\u002220240223180840_PictureUrl\u0022)\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.MigrationAttribute",
+            "line": 14,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "9d50e68a-a327-46d6-8588-70335b2961d4",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Data\\ApplicationDbContext.cs",
+            "snippet": ": base(options)\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)",
+            "line": 7,
+            "column": 88,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.dbcontext"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0f09dcd3-ffa9-4773-ac4d-cc8e5ed1c2b8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022FlightId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 56,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4a8d02e0-1aff-4b36-90f9-02ec11218d5e",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.HasKey(\u0022CarRentalId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 49,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "45cf0f1a-d612-4fe5-bed8-c60753247202",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Name\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 103,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "af0ef7eb-b0e8-432e-8a2e-38c47b6926e5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Airline\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 62,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "705a5829-858f-4c7a-aa85-32e513430ac9",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022HotelId\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 90,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "600deb3c-2b34-474c-bd43-68241e241498",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022Location\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 99,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "d19bc742-91bb-48b7-98cd-7350162912c9",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022PictureUrl\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 107,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "58784036-456c-437b-ae55-eaa832a83d3d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cstring\u003E(type: \u0022nvarchar(max)\u0022, nullable: true)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 48,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a239dd30-029a-4242-94e5-f10fc261d749",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+            "snippet": "DbContext(typeof(ApplicationDbContext))\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.DbContextAttribute",
+            "line": 12,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.dbcontextattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "8bdde418-a0e4-40a3-96f6-65e16f066148",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "Migration\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.Migration",
+            "line": 8,
+            "column": 41,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "09ea3fac-c709-4e68-b66e-81797a14e53c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cint\u003E(type: \u0022int\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 13,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0f2b2626-dc79-4255-9923-bcad66ff554d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "Migration(\u002220240220210136_InitialCreate\u0022)\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.MigrationAttribute",
+            "line": 14,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f23b7bdf-bf48-42c8-be26-72dcd7850767",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.Designer.cs",
+            "snippet": "modelBuilder.Entity(\u0022Assignment1.Models.Hotel\u0022, b =\u003E\r\n                {\r\n                    b.Property\u003Cint\u003E(\u0022HotelId\u0022)\r\n                        .ValueGeneratedOnAdd()\r\n                        .HasColumnType(\u0022int\u0022);\r\n\r\n                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property\u003Cint\u003E(\u0022HotelId\u0022));\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Amenities\u0022)\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Location\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cstring\u003E(\u0022Name\u0022)\r\n                        .IsRequired()\r\n                        .HasColumnType(\u0022nvarchar(max)\u0022);\r\n\r\n                    b.Property\u003Cdecimal\u003E(\u0022Price\u0022)\r\n                        .HasColumnType(\u0022decimal(18,2)\u0022);\r\n\r\n                    b.HasKey(\u0022HotelId\u0022);\r\n\r\n                    b.ToTable(\u0022Hotels\u0022);\r\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 91,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "104808e3-9b83-491e-b575-a2987679ecc8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cint\u003E(type: \u0022int\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 30,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1a9485f1-a06e-4867-b0a8-3e85f93f1781",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "migrationBuilder.DropTable(\r\n                name: \u0022Hotels\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(System.String,System.String)",
+            "line": 74,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.droptable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "25c6f5f7-7111-4a08-8d08-1d62bb2ec564",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cdecimal\u003E(type: \u0022decimal(18,2)\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 30,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "ca3f2161-ef2f-4315-8190-72f404e4abe8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Migrations\\20240220210136_InitialCreate.cs",
+            "snippet": "table.Column\u003Cint\u003E(type: \u0022int\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 48,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "22bf6da0-0dc6-4473-a97f-9aebe692bc1c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\FlightController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 137,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "aec48b9e-5e6a-4011-bbc6-4ce747a7405c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\CarRentalController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 140,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "63ebf100-3ce9-4cf1-b453-8e376513da22",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Assignment1.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\\u041B\u044E\u0431\u043E\u0447\u043A\u0430\\Desktop\\Assignment1\\Areas\\BookingManagement\\Controllers\\HotelController.cs",
+            "snippet": "_context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 154,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530"
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to correspinding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in moderrn .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227"
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226"
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "description": "Some API that lived in older versions of .NET frameworks were moved to standalone NuGet packages that could be added to projects explicitly.",
+      "label": "API available in NuGet package",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679"
+        }
+      ]
+    }
+  }
+}
