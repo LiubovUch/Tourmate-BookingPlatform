@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Mail;
@@ -41,7 +42,7 @@ namespace Assignment1.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
             _userStore = userStore;
-            //_emailStore = GetEmailStore();
+            //  _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
@@ -82,17 +83,19 @@ namespace Assignment1.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long. ", MinimumLength = 1)]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 1)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long. ", MinimumLength = 1)]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
+
+
             /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     This API supports the ASP.NET Core Identity default UIture and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
@@ -124,19 +127,17 @@ namespace Assignment1.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                // var user = CreateUser();
-                //ApplicationUser user = CreateUser()
-
+                //var user = CreateUser();
                 MailAddress address = new MailAddress(Input.Email);
                 string userName = address.User;
-
                 var user = new ApplicationUser
                 {
                     UserName = userName,
+                    Email = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Email = Input.Email,
                 };
+
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

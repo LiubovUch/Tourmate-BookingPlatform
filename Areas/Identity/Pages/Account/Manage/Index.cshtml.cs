@@ -61,13 +61,17 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
 
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
+
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
+
             [Display(Name = "Username")]
             public string Username { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
             [Display(Name = "Profile Picture")]
             public byte[] ProfilePicture { get; set; }
 
@@ -77,6 +81,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+
             var firstName = user.FirstName;
             var lastName = user.LastName;
             var profilePicture = user.ProfilePicture;
@@ -100,7 +105,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            UserChangeLimitStatusMessage = $"You can change your name{ user.UsernameChangeLimit} more times";
+            UserChangeLimitStatusMessage = $"You can change your name{user.UsernameChangeLimit} more times";
             await LoadAsync(user);
             return Page();
         }
@@ -132,14 +137,21 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
 
             if (user.UsernameChangeLimit > 0)
             {
-                if (!string.IsNullOrEmpty(Input.Username))
+                if (Input.Username != user.UserName)
                 {
+                    if (string.IsNullOrEmpty(Input.Username))
+                    {
+                        StatusMessage = "Error: Username cannot be null or empty.";
+                        return RedirectToPage();
+                    }
+
                     var userNameExists = await _userManager.FindByNameAsync(Input.Username);
                     if (userNameExists != null)
                     {
-                        StatusMessage = "Error username is already taken. Please choose  a different usermname";
+                        StatusMessage = "Error: Username is already taken. Please choose a different username.";
                         return RedirectToPage();
                     }
+                 
                     var setUserName = await _userManager.SetUserNameAsync(user, Input.Username);
                     if (!setUserName.Succeeded)
                     {
@@ -148,14 +160,10 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                     }
                     else
                     {
+                        user.UserName = Input.Username;
                         user.UsernameChangeLimit -= 1;
                         await _userManager.UpdateAsync(user);
                     }
-                }
-                else
-                {
-                    StatusMessage = "Error: Username cannot be null or empty.";
-                    return RedirectToPage();
                 }
             }
 
