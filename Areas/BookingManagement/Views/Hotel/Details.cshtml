@@ -1,20 +1,24 @@
-﻿@model Hotel
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model Hotel
 @{
     ViewData["Title"] = "Hotel Details";
+    var currentUser = await UserManager.GetUserAsync(User);
+    bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
 }
 
 <style>
     .hotel-image {
-        width: 420px; 
-        height: 300px; 
-        object-fit: cover; 
-        display: block; 
-        margin-bottom: 20px; 
+        width: 420px;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 20px;
     }
 
     .hotel-details {
-        min-height: 300px; 
-        overflow-y: auto; 
+        min-height: 300px;
+        overflow-y: auto;
     }
 </style>
 
@@ -31,11 +35,13 @@
                 <p class="card-text"><strong>Location:</strong> @Model.Location</p>
                 <p class="card-text"><strong>Price per night:</strong> $@Model.Price</p>
                 <p class="card-text"><strong>Amenities:</strong> @Model.Amenities</p>
-
-                <div class="btn-group" role="group" aria-label="Hotel Actions">
-                    <a asp-action="Edit" asp-route-id="@Model.HotelId" class="btn btn-light">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@Model.HotelId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
-                </div>
+                @if (isAdmin)
+                {
+                    <div class="btn-group" role="group" aria-label="Hotel Actions">
+                        <a asp-action="Edit" asp-route-id="@Model.HotelId" class="btn btn-light">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@Model.HotelId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
+                    </div>
+                }
             </div>
         </div>
     </div>

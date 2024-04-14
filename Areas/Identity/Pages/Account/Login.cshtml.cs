@@ -21,19 +21,19 @@ namespace Assignment1.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-       private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public LoginModel
-            (SignInManager<ApplicationUser> signInManager, 
+            (SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
             _userManager = userManager;
-        } 
+        }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -72,7 +72,6 @@ namespace Assignment1.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [EmailAddress]
             [Display(Name = "Email / Username")]
             public string Email { get; set; }
 
@@ -118,19 +117,14 @@ namespace Assignment1.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var userName = Input.Email;
-                if (IsValidEmail(Input.Email))
+                if (isValidEmail(Input.Email))
                 {
                     var user = await _userManager.FindByEmailAsync(Input.Email);
-
                     if (user != null)
                     {
                         userName = user.UserName;
                     }
-
                 }
-
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -157,16 +151,14 @@ namespace Assignment1.Areas.Identity.Pages.Account
             return Page();
         }
 
-        public bool IsValidEmail(string emailAddress)
+        public bool isValidEmail(string emailAddress)
         {
             try
             {
-                var MailAddress =
-                    new MailAddress(emailAddress);
-
+                MailAddress m = new MailAddress(emailAddress);
                 return true;
             }
-            catch
+            catch (FormatException)
             {
                 return false;
             }

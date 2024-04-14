@@ -1,5 +1,6 @@
 ﻿using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             _context = context;
         }
-
-        [HttpGet]
         public IActionResult Index(string carModel, string company, string sortOrder)
         {
             var carRentals = _context.CarRentals.ToList();
@@ -43,10 +42,17 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                     break;
             }
 
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(carRentals);
+            }
+
             return View(carRentals);
         }
 
+
         [HttpGet("{id:int}")]
+        [Authorize]
         public IActionResult Details(int id)
         {
             var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
@@ -55,6 +61,13 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 return NotFound();
             }
             return View(carRental);
+        }
+
+        [HttpGet("GetCarRentals")]
+        public async Task<IActionResult> GetCarRentals()
+        {
+            var carRentals = await _context.CarRentals.ToListAsync();
+            return Json(carRentals);
         }
 
         [HttpGet("Create")]

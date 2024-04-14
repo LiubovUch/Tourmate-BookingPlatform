@@ -1,6 +1,10 @@
-﻿@model List<CarRental>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model List<CarRental>
 @{
     ViewData["Title"] = "Car Rental List";
+    var currentUser = await UserManager.GetUserAsync(User);
+    bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
 }
 
 <img src="https://media.assets.ansira.net/websites/content/cblt-ms-nissan//39f414af448c484db13471de169ff43c_1598x686.jpg" alt="Car Rental Image" class="car-rental-image">
@@ -33,17 +37,20 @@
         font-size: 14px; 
     }
 
-    .btn {
-        padding: 5px 10px;
-        font-size: 14px;
-        border-radius: 5px;
-    }
 </style>
-
-<div class="title-bar">
-    <h2 class="title">Car Rental List</h2>
-    <a class="btn btn-outline-secondary create-car-rental-btn" asp-action="Create">Add Car Rental</a>
-</div>
+@if (isAdmin)
+{
+    <div class="title-bar">
+        <h2 class="title">Car Rental List</h2>
+        <a class="btn btn-outline-secondary create-car-rental-btn" asp-action="Create">Add Car Rental</a>
+    </div>
+}
+else
+{
+    <div class="title-bar">
+        <h2 class="title">Car Rental List</h2>
+    </div>
+}
 
 <form asp-controller="CarRental" asp-action="Index" method="get">
     <div class="row">

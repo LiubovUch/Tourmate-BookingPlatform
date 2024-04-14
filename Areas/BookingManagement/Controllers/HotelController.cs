@@ -1,5 +1,7 @@
 ﻿using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
+using Assignment1.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -48,6 +50,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public IActionResult Details(int id)
         {
             var hotel = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
@@ -65,6 +68,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpPost("Create")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Hotel hotel, string[] amenities)
         {
@@ -78,6 +82,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             return View(hotel);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Edit/{id:int}")]
         public IActionResult Edit(int id)
         {
@@ -90,6 +95,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpPost("Edit/{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("HotelId, Name, Location, Price, Amenities, PictureUrl")] Hotel hotel, string[] Amenities)
         {
@@ -134,6 +140,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Delete/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var hotel = _context.Hotels.FirstOrDefault(p => p.HotelId == id);
@@ -146,6 +153,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
 
         [HttpPost("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int hotelId)
         {
             var hotel = _context.Hotels.Find(hotelId);

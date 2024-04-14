@@ -1,6 +1,10 @@
-﻿@model List<Hotel>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model List<Hotel>
 @{
     ViewData["Title"] = "Hotel List";
+    var currentUser = await UserManager.GetUserAsync(User);
+    bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
 }
 <style>
     .title-bar {
@@ -14,17 +18,27 @@
         margin-top: 20px;
     }
 
-    .create-flight-btn {
+    .create-hotel-btn {
         margin-top: 20px;
         margin-left: 10px;
-        padding: 5px 10px; 
-        font-size: 14px; 
+        padding: 5px 10px;
+        font-size: 14px;
     }
 </style>
-<div class="title-bar">
-    <h2 class="title">Hotel List</h2>
-    <a class="btn btn-outline-secondary create-flight-btn" asp-action="Create">Add Hotel</a>
-</div>
+
+@if (isAdmin)
+{
+    <div class="title-bar">
+        <h2 class="title">Hotel List</h2>
+        <a class="btn btn-outline-secondary create-hotel-btn " asp-action="Create">Add Hotel</a>
+    </div>
+}
+else
+{
+    <div class="title-bar">
+        <h2 class="title">Hotel List</h2>
+    </div>
+}
 
 <form asp-controller="Hotel" asp-action="Index" method="get">
     <div class="row">

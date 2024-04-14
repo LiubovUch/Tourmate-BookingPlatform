@@ -1,6 +1,10 @@
-﻿@model Flight
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model Flight
 @{
     ViewData["Title"] = "Flight Details";
+    var currentUser = await UserManager.GetUserAsync(User);
+    bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
 }
 
 <style>
@@ -33,11 +37,13 @@
                 <p class="card-text"><strong>Departure Time:</strong> @Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</p>
                 <p class="card-text"><strong>Arrival Time:</strong> @Model.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</p>
                 <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
-
-                <div class="btn-group" role="group" aria-label="Flight Actions">
-                    <a asp-action="Edit" asp-route-id="@Model.FlightId" class="btn btn-light">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@Model.FlightId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
-                </div>
+                @if (isAdmin)
+                {
+                    <div class="btn-group" role="group" aria-label="Flight Actions">
+                        <a asp-action="Edit" asp-route-id="@Model.FlightId" class="btn btn-light">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@Model.FlightId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -46,10 +52,12 @@
 @using (Html.BeginForm("Index", "Booking", FormMethod.Post))
 {
     @Html.HiddenFor(model => model.FlightId)
-    <div class="text-center">
+    <div class="text-center mt-2">
         <input type="submit" value="Book" class="btn btn-success rounded-pill" style="width: 20%;" />
     </div>
     <div class="text-center mt-2">
         <a asp-action="Index" class="btn btn-light">Back to List</a>
     </div>
+
 }
+

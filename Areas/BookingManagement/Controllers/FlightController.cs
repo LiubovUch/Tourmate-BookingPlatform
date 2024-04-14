@@ -1,5 +1,6 @@
 ﻿using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -44,6 +45,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public IActionResult Details(int id)
         {
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);

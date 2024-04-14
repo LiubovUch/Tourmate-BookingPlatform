@@ -1,5 +1,6 @@
 ﻿using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace Assignment1.Controllers
@@ -15,11 +16,13 @@ namespace Assignment1.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Index page visited");
             return View();
         }
 
         public IActionResult About()
         {
+            _logger.LogInformation("About page visited");
             return View();
         }
 

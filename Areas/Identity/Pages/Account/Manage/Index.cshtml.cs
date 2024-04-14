@@ -105,7 +105,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            UserChangeLimitStatusMessage = $"You can change your name{user.UsernameChangeLimit} more times";
+            UserChangeLimitStatusMessage = $"You can change your name {user.UsernameChangeLimit} more times";
             await LoadAsync(user);
             return Page();
         }
@@ -151,7 +151,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                         StatusMessage = "Error: Username is already taken. Please choose a different username.";
                         return RedirectToPage();
                     }
-                 
+
                     var setUserName = await _userManager.SetUserNameAsync(user, Input.Username);
                     if (!setUserName.Succeeded)
                     {
