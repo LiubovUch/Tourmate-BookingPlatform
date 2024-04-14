@@ -54,11 +54,6 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
-
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
@@ -75,7 +70,22 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Profile Picture")]
             public byte[] ProfilePicture { get; set; }
 
+            // Add properties for travel preferences
+            [Display(Name = "Travel Preferences")]
+            public string TravelPreferences { get; set; }
+
+            [Display(Name = "Frequent Flyer Number")]
+            public string FrequentFlyerNumber { get; set; }
+
+            // Add properties for hotel preferences
+            [Display(Name = "Hotel Preferences")]
+            public string HotelPreferences { get; set; }
+
+            // Add properties for car preferences
+            [Display(Name = "Car Preferences")]
+            public string CarPreferences { get; set; }
         }
+
 
         private async Task LoadAsync(ApplicationUser user)
         {
@@ -85,6 +95,9 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             var firstName = user.FirstName;
             var lastName = user.LastName;
             var profilePicture = user.ProfilePicture;
+            var frequentFlyerNumber = user.FrequentFlyerNumber;
+            var hotelPreferences = user.HotelPreferences; // Add this line
+            var carPreferences = user.CarPreferences; // Add this line
 
             Username = userName;
             Input = new InputModel
@@ -93,10 +106,15 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                 LastName = lastName,
                 PhoneNumber = phoneNumber,
                 Username = userName,
-                ProfilePicture = profilePicture
+                ProfilePicture = profilePicture,
+                FrequentFlyerNumber = frequentFlyerNumber,
+                HotelPreferences = hotelPreferences, // Add this line
+                CarPreferences = carPreferences, // Add this line
             };
+            
 
         }
+
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -105,10 +123,63 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            UserChangeLimitStatusMessage = $"You can change your name {user.UsernameChangeLimit} more times";
-            await LoadAsync(user);
+            
+
+            // Load user's existing preferences
+            var frequentFlyerNumber = user.FrequentFlyerNumber;
+            var carPreferences = user.CarPreferences;
+            var hotelPreferences = user.HotelPreferences;
+
+            // Populate the Input model with existing preferences
+            Input = new InputModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
+                Username = await _userManager.GetUserNameAsync(user),
+                CarPreferences = carPreferences,  
+                HotelPreferences= hotelPreferences,
+                FrequentFlyerNumber = frequentFlyerNumber,
+                // Populate other Input model properties as needed
+            };
+
+            Input.FrequentFlyerNumber = frequentFlyerNumber;
+
+            // Pre-select checkboxes based on existing preferences
+            ViewData["CheckedAmenities"] = new List<string>(); // Initialize a list to hold checked amenities
+            ViewData["CheckedCarPreferences"] = new List<string>(); // Initialize a list to hold checked car preferences
+            ViewData["CheckedHotelPreferences"] = new List<string>(); // Initialize a list to hold checked hotel preferences
+
+
+            if (!string.IsNullOrEmpty(carPreferences))
+            {
+                // Split the string into individual preferences
+                var preferences = carPreferences.Split(',', StringSplitOptions.RemoveEmptyEntries);
+                // Add each preference to the list
+                foreach (var preference in preferences)
+                {
+                    ((List<string>)ViewData["CheckedCarPreferences"]).Add(preference.Trim());
+                }
+            }
+
+            if (!string.IsNullOrEmpty(hotelPreferences))
+            {
+                // Split the string into individual preferences
+                var preferences = hotelPreferences.Split(',', StringSplitOptions.RemoveEmptyEntries);
+                // Add each preference to the list
+                foreach (var preference in preferences)
+                {
+                    ((List<string>)ViewData["CheckedHotelPreferences"]).Add(preference.Trim());
+                }
+            }
+
+            // Refresh the sign-in and return the page
+            await _signInManager.RefreshSignInAsync(user);
             return Page();
+
         }
+
+
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -171,16 +242,29 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             if (Input.FirstName != firstName)
             {
                 user.FirstName = Input.FirstName;
-                await _userManager.UpdateAsync(user);
             }
 
             var lastName = user.LastName;
             if (Input.LastName != lastName)
             {
                 user.LastName = Input.LastName;
-                await _userManager.UpdateAsync(user);
             }
 
+            // Update additional properties
+            user.CarPreferences = Input.CarPreferences;
+            user.HotelPreferences = Input.HotelPreferences;
+            //user.TravelPreferences = Input.TravelPreferences;
+            //user.FrequentFlyerNumber = Input.FrequentFlyerNumber;
+
+            // Save changes to the user entity
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to update user profile.";
+                return RedirectToPage();
+            }
+
+            // Handle profile picture update
             if (Request.Form.Files.Count > 0)
             {
                 IFormFile file = Request.Form.Files.FirstOrDefault();
@@ -189,11 +273,22 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                     await file.CopyToAsync(dataStream);
                     user.ProfilePicture = dataStream.ToArray();
                 }
-                await _userManager.UpdateAsync(user);
             }
+
+            // Save changes to the user entity again to include profile picture update
+            updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to update user profile picture.";
+                return RedirectToPage();
+            }
+
+            // Refresh sign-in and display success message
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
+
+
     }
 }

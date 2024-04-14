@@ -2,6 +2,7 @@
 using Assignment1.Data;
 using Assignment1.Enum;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -13,40 +14,54 @@ namespace Assignment1.Areas.BookingManagement.Controllers
     public class HotelController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager; // Inject UserManager
 
-        public HotelController(ApplicationDbContext context)
+        // Inject ApplicationDbContext and UserManager
+        public HotelController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
-
+  
         [HttpGet]
-        public IActionResult Index(string name, string location, string sortOrder)
+        public async Task<IActionResult> Index(string name, string location, string sortOrder)
         {
-            var hotels = _context.Hotels.AsQueryable();
+            var hotels = _context.Hotels.ToList();
 
+            // Apply other filters
             if (!string.IsNullOrEmpty(name))
             {
-                hotels = hotels.Where(h => h.Name.Contains(name));
+                hotels = hotels.Where(h => h.Name.Contains(name)).ToList();
             }
             if (!string.IsNullOrEmpty(location))
             {
-                hotels = hotels.Where(h => h.Location.Contains(location));
+                hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
             }
 
+            // Filter based on user's hotel preferences
+            var currentUser = await _userManager.GetUserAsync(User);
+            var hotelPreferences = currentUser.HotelPreferences; // Assuming it's HotelPreferences based on your model
+
+            // Apply sorting
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             switch (sortOrder)
             {
                 case "price_asc":
-                    hotels = hotels.OrderBy(h => h.Price);
+                    hotels = hotels.OrderBy(h => h.Price).ToList();
                     break;
                 case "price_desc":
-                    hotels = hotels.OrderByDescending(h => h.Price);
+                    hotels = hotels.OrderByDescending(h => h.Price).ToList();
                     break;
                 default:
                     break;
             }
 
-            return View(hotels.ToList());
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(hotels);
+            }
+
+            return View(hotels);
         }
 
         [HttpGet("{id:int}")]

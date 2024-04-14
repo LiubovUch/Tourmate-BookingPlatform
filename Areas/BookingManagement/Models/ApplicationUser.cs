@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Assignment1.Areas.BookingManagement.Models
+public class ApplicationUser : IdentityUser
 {
-    public class ApplicationUser: IdentityUser
-    {
-        public String FirstName { get; set; }
-        public string LastName { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 
-        public int UsernameChangeLimit { get; set; } = 10;
+    public int UsernameChangeLimit { get; set; } = 10;
 
-        public byte[]? ProfilePicture { get; set; }
-    }
+    public byte[]? ProfilePicture { get; set; }
+
+    // Set default values for preferences
+    public string FrequentFlyerNumber { get; set; } = "None";
+    public string CarPreferences { get; set; } = "None";
+    public string HotelPreferences { get; set; } = "None";
+
 }

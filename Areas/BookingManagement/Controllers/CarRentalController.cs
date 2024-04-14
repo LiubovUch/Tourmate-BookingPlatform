@@ -1,8 +1,12 @@
 ﻿using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Assignment1.Areas.BookingManagement.Controllers
 {
@@ -11,15 +15,26 @@ namespace Assignment1.Areas.BookingManagement.Controllers
     public class CarRentalController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager; // Inject UserManager
 
-        public CarRentalController(ApplicationDbContext context)
+        // Inject ApplicationDbContext and UserManager
+        public CarRentalController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
-        public IActionResult Index(string carModel, string company, string sortOrder)
+
+        public async Task<IActionResult> Index(string carModel, string company, string sortOrder)
         {
             var carRentals = _context.CarRentals.ToList();
 
+            // Filter based on user's car preferences
+            var currentUser = await _userManager.GetUserAsync(User); // Use _userManager to access GetUserAsync
+            var carPreferences = currentUser.CarPreferences; // Assuming it's CarPreferences based on your model
+            
+
+
+            // Apply other filters
             if (!string.IsNullOrEmpty(carModel))
             {
                 carRentals = carRentals.Where(c => c.CarModel.Contains(carModel)).ToList();
@@ -29,6 +44,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 carRentals = carRentals.Where(c => c.RentalCompany.Contains(company)).ToList();
             }
 
+            // Apply sorting
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             switch (sortOrder)
             {
@@ -49,6 +65,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
 
             return View(carRentals);
         }
+
 
 
         [HttpGet("{id:int}")]

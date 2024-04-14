@@ -11,6 +11,9 @@ namespace Assignment1.Areas.BookingManagement.Models
         public string? CarModel { get; set; }
 
         [Required]
+        public string? CarType { get; set; }
+
+        [Required]
         public string? RentalCompany { get; set; }
 
         public decimal Price { get; set; }

@@ -5,7 +5,9 @@
     ViewData["Title"] = "Hotel List";
     var currentUser = await UserManager.GetUserAsync(User);
     bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
+    var userHotelPreferences = currentUser.HotelPreferences;
 }
+
 <style>
     .title-bar {
         display: flex;
@@ -55,12 +57,52 @@ else
     </div>
 </form>
 
-
-@if (Model.Any())
+@if (!Model.Any())
 {
+    <p>No Hotels Available</p>
+}
+else
+{
+    // Filtering hotels based on user's hotel preferences
+    var matchingHotels = Model.Where(hotel => hotel.Amenities.Contains(userHotelPreferences)).ToList();
+
     <div class="row mt-4">
+        @if (matchingHotels.Any())
+        {
+            <div class="col-12">
+                <h3>Best Matches</h3>
+                <hr />
+            </div>
+            @foreach (var hotel in matchingHotels)
+            {
+                <!-- Display best matches here -->
+                <div class="col-sm-4 mb-4" margin-top="40px">
+                    <div class="card" style="width: 100%;">
+                        <img class="card-img-top" src="@hotel.PictureUrl" alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;object-position: center center;">
+                        <div class="card-body">
+                            <h5 class="card-title">@hotel.Name</h5>
+                            <p class="card-text"><i class="fa-solid fa-check"></i> @hotel.Amenities</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fa-solid fa-city"></i> Location: @hotel.Location</li>
+                            <li class="list-group-item"><i class="fa-solid fa-wallet"></i> Price per night: $@hotel.Price</li>
+                        </ul>
+                        <div class="card-body text-center">
+                            <a asp-action="Details" asp-route-id="@hotel.HotelId" class="btn btn-success rounded-pill" style="width:30%;">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="col-12 mt-4">
+            <h3>All Listings</h3>
+            <hr />
+        </div>
+
         @foreach (var hotel in Model)
         {
+            <!-- Display all hotels here -->
             <div class="col-sm-4 mb-4" margin-top="40px">
                 <div class="card" style="width: 100%;">
                     <img class="card-img-top" src="@hotel.PictureUrl" alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;object-position: center center;">
@@ -79,8 +121,4 @@ else
             </div>
         }
     </div>
-}
-else
-{
-    <p>No Hotels Available</p>
 }

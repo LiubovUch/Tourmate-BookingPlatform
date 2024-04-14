@@ -136,6 +136,7 @@ namespace Assignment1.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
+                    FrequentFlyerNumber = GenerateFrequentFlyerNumber()
                 };
 
 
@@ -146,7 +147,7 @@ namespace Assignment1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, Enum.Roles.Travelers.ToString());
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -200,6 +201,13 @@ namespace Assignment1.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<IdentityUser>)_userStore;
+        }
+
+        private string GenerateFrequentFlyerNumber()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(100000, 999999);
+            return randomNumber.ToString();
         }
     }
 }

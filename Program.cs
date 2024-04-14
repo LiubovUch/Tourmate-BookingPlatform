@@ -8,14 +8,14 @@ using Serilog;
 using Serilog.Events;
 
 
-
+/*
 Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
+                .CreateLogger();*/
 
 var builder = WebApplication.CreateBuilder(args);
 
