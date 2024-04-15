@@ -3,6 +3,7 @@ using Assignment1.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 
 namespace Assignment1.Areas.BookingManagement.Controllers
@@ -70,6 +71,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             {
                 _context.Flights.Add(flight);
                 _context.SaveChanges();
+                Log.Information("New flight created: {FlightId}", flight.FlightId);
                 return RedirectToAction(nameof(Index));
             }
             return View(flight);

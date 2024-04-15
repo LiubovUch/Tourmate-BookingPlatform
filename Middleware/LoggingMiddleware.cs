@@ -1,32 +1,34 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
-namespace Assignment1.Middleware
+public class ErrorHandlingMiddleware
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class LoggingMiddleware
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ErrorHandlingMiddleware> _logger;
+
+    public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
     {
-        private readonly RequestDelegate _next;
-
-        public LoggingMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
-        public Task Invoke(HttpContext httpContext)
-        {
-
-            return _next(httpContext);
-        }
+        _next = next;
+        _logger = logger;
     }
 
-    // Extension method used to add the middleware to the HTTP request pipeline.
-    public static class LoggingMiddlewareExtensions
+    public async Task Invoke(HttpContext context)
     {
-        public static IApplicationBuilder UseLoggingMiddleware(this IApplicationBuilder builder)
+        try
         {
-            return builder.UseMiddleware<LoggingMiddleware>();
+            await _next(context);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred");
+
+            context.Response.ContentType = "text/plain";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
         }
     }
 }

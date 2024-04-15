@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Assignment1.Areas.BookingManagement.Models;
 using Serilog;
 using Serilog.Events;
+using Microsoft.Extensions.Logging;
 
 
 /*
