@@ -59,12 +59,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             {
                 return Json(hotels);
             }
-            //------MIDDLEWARE TESTING -------
-
-            /*            if (currentUser!=null) 
-                        {
-                            throw new Exception("This is a test exception");
-                        }*/
 
             return View(hotels);
         }
