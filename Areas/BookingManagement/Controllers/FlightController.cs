@@ -43,7 +43,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 flights = flights.Where(f => f.DepartureTime.Date == departureTime.Value.Date);
             }
 
-            var filteredFlights = await flights.ToListAsync(); // Make sure to await ToListAsync
+            var filteredFlights = await flights.ToListAsync(); 
 
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
@@ -127,7 +127,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 {
                     _context.Update(flight);
                     _context.SaveChanges();
-                    return PartialView("_FlightDetails", flight); // Return partial view with updated flight details
+                    return PartialView("_FlightDetails", flight); 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -148,7 +148,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Retrieve the flight from the database
                 var existingFlight = await _context.Flights.FirstOrDefaultAsync(f => f.FlightId == flight.FlightId);
 
                 if (existingFlight == null)
@@ -156,7 +155,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                     return NotFound();
                 }
 
-                // Update the flight details
                 existingFlight.Airline = flight.Airline;
                 existingFlight.DepartureLocation = flight.DepartureLocation;
                 existingFlight.ArrivalLocation = flight.ArrivalLocation;
@@ -164,16 +162,13 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 existingFlight.ArrivalTime = flight.ArrivalTime;
                 existingFlight.Price = flight.Price;
 
-                // Save changes to the database
                 _context.Entry(existingFlight).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
 
-                // Optionally, you can return a JSON response indicating success
                 return Json(new { success = true });
             }
             else
             {
-                // If model state is not valid, return validation errors
                 return BadRequest(ModelState);
             }
         }

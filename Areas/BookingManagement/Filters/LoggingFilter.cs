@@ -15,7 +15,6 @@ namespace Assignment1.Areas.BookingManagement.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            // Log the details of the user's activity before the action executes
             var controllerName = context.RouteData.Values["controller"];
             var actionName = context.RouteData.Values["action"];
             var ipAddress = context.HttpContext.Connection.RemoteIpAddress;
@@ -25,7 +24,6 @@ namespace Assignment1.Areas.BookingManagement.Filters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            // Log the details of the user's activity after the action executes
             var controllerName = context.RouteData.Values["controller"];
             var actionName = context.RouteData.Values["action"];
             var ipAddress = context.HttpContext.Connection.RemoteIpAddress;

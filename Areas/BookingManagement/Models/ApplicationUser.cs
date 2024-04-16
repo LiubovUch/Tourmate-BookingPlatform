@@ -9,7 +9,6 @@ public class ApplicationUser : IdentityUser
 
     public byte[]? ProfilePicture { get; set; }
 
-    // Set default values for preferences
     public string FrequentFlyerNumber { get; set; } = "None";
     public string? CarPreferences { get; set; } = "None";
     public string? HotelPreferences { get; set; } = "None";

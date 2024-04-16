@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    // Function to load flight listings
     function loadFlightListings(data) {
         var html = '';
         var rowOpen = false;
@@ -10,9 +9,9 @@
             for (var i = 0; i < data.length; i++) {
                 if (i % columnsPerRow === 0) {
                     if (rowOpen) {
-                        html += '</div>'; // Close the previous row
+                        html += '</div>'; 
                     }
-                    html += '<div class="row">'; // Open a new row
+                    html += '<div class="row">'; 
                     rowOpen = true;
                 }
                 html += '<div class="col-sm-4 mb-4"  >';
@@ -29,7 +28,7 @@
                 html += '<div class="card-body text-center">';
                 html += `<button class="btn btn-success rounded-pill details-button" data-id="${data[i].flightId}" style="width:30%;">Details</button>`;
                 html += '</div>';
-                html += '</div>'; // Close the card
+                html += '</div>'; 
                 html += '</div>';
                 if (i % columnsPerRow === columnsPerRow - 1 || i === data.length - 1) {
                     html += '</div>';
@@ -43,10 +42,8 @@
     }
     $(document).on('click', '.details-button', function () {
         var flightId = $(this).data('id');
-        // Redirect to details page with the selected car rental ID
         window.location.href = '/BookingManagement/Flight/' + flightId;
     });
-    // Function to format date
     function formatDate(dateString) {
         var date = new Date(dateString);
         var year = date.getFullYear();
@@ -57,7 +54,6 @@
         return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes;
     }
 
-    // Function to load initial flight listings
     function loadInitialListings() {
         $.ajax({
             url: '/BookingManagement/Flight/GetFlights',
@@ -71,13 +67,10 @@
         });
     }
 
-    // Submit flight search form
-    // Submit flight search form
     $('#flightSearchForm').submit(function (event) {
-        event.preventDefault(); // Prevent default form submission behavior
+        event.preventDefault(); 
         var formData = $(this).serialize();
 
-        // Make AJAX request
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
@@ -95,6 +88,5 @@
         });
     });
 
-    // Load initial flight listings
     loadInitialListings();
 });

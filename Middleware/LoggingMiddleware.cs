@@ -18,10 +18,8 @@ public class LoggingMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        // Log the incoming request
         await LogRequestAsync(context.Request);
 
-        // Call the next middleware in the pipeline
         await _next(context);
     }
 

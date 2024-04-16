@@ -33,7 +33,7 @@ namespace Assignment1.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error sending email to {Email} with subject {Subject}", email, subject);
-                throw; // Re-throw the exception to propagate it up the call stack
+                throw; 
             }
         }
     }

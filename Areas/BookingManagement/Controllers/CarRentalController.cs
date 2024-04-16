@@ -19,7 +19,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        // Inject ApplicationDbContext and UserManager
         public CarRentalController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -30,12 +29,10 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             var carRentals = _context.CarRentals.ToList();
 
-            // Filter based on user's car preferences
             var currentUser = await _userManager.GetUserAsync(User);
             var carPreferences = currentUser.CarPreferences;
 
 
-            // Apply other filters
             if (!string.IsNullOrEmpty(carModel))
             {
                 carRentals = carRentals.Where(c => c.CarModel.Contains(carModel)).ToList();
@@ -49,7 +46,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 carRentals = carRentals.Where(c => c.CarType.Contains(carType)).ToList();
             }
 
-            // Apply sorting
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             switch (sortOrder)
             {
@@ -195,10 +191,9 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             var currentUser = await _userManager.GetUserAsync(User);
             var carPreferences = currentUser.CarPreferences.Split(',');
 
-            // Check if search criteria are empty
             if (string.IsNullOrEmpty(carModel) && string.IsNullOrEmpty(company) && string.IsNullOrEmpty(carType) && string.IsNullOrEmpty(sortOrder))
             {
-                // Filter car rentals based on user preferences
+
                 var matchingCarRentals = _context.CarRentals
                     .Where(carRental => carPreferences.Any(pref => carRental.CarType.Contains(pref)))
                     .ToList();
@@ -207,7 +202,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             }
             else
             {
-                // Return an empty array to indicate that no best matches are available
                 return Json(new CarRental[0]);
             }
         }

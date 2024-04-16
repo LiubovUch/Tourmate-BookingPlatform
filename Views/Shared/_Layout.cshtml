@@ -38,8 +38,6 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            //PGLHBCKE6QWRPMLHDA4X79N8 -recovery send grid
-                            //profile
                             <li class="nav-item align-items-center" style="display: flex; align-items: center;">
                                 @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
                                 {
@@ -90,7 +88,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Assignment1 - <a asp-area="" asp-controller="Home" asp-action="About">Daria Ignateva & Liubov Uchamprina</a>
+            &copy; 2024 - Assignment1 - <a asp-area="" asp-controller="Home" asp-action="About">Daria Ignateva, Liubov Uchamprina, Lara Alkhatabi</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

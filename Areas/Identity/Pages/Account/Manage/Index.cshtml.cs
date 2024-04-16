@@ -73,11 +73,9 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Frequent Flyer Number")]
             public string FrequentFlyerNumber { get; set; }
 
-            // Add properties for hotel preferences
             [Display(Name = "Hotel Preferences")]
             public string HotelPreferences { get; set; }
 
-            // Add properties for car preferences
             [Display(Name = "Car Preferences")]
             public string CarPreferences { get; set; }
         }
@@ -91,8 +89,8 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             var lastName = user.LastName;
             var profilePicture = user.ProfilePicture;
             var frequentFlyerNumber = user.FrequentFlyerNumber;
-            var hotelPreferences = user.HotelPreferences; // Add this line
-            var carPreferences = user.CarPreferences; // Add this line
+            var hotelPreferences = user.HotelPreferences; 
+            var carPreferences = user.CarPreferences; 
 
             Username = userName;
             Input = new InputModel
@@ -103,8 +101,8 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                 Username = userName,
                 ProfilePicture = profilePicture,
                 FrequentFlyerNumber = frequentFlyerNumber,
-                HotelPreferences = hotelPreferences, // Add this line
-                CarPreferences = carPreferences, // Add this line
+                HotelPreferences = hotelPreferences, 
+                CarPreferences = carPreferences, 
             };
 
 
@@ -128,11 +126,9 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
 
             };
             Input.FrequentFlyerNumber = frequentFlyerNumber;
-
-            // Pre-select checkboxes based on existing preferences
-            ViewData["CheckedAmenities"] = new List<string>(); // Initialize a list to hold checked amenities
-            ViewData["CheckedCarPreferences"] = new List<string>(); // Initialize a list to hold checked car preferences
-            ViewData["CheckedHotelPreferences"] = new List<string>(); // Initialize a list to hold checked hotel preferences
+            ViewData["CheckedAmenities"] = new List<string>(); 
+            ViewData["CheckedCarPreferences"] = new List<string>(); 
+            ViewData["CheckedHotelPreferences"] = new List<string>(); 
 
 
             if (!string.IsNullOrEmpty(carPreferences))
@@ -236,10 +232,9 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             }
             else
             {
-                user.HotelPreferences = null; // No preferences selected
+                user.HotelPreferences = null; 
             }
 
-            // Process car preferences
             var carPreferences = Request.Form["Input.CarPreferences"].Select(p => p).ToArray();
             if (carPreferences.Length > 0)
             {
@@ -247,7 +242,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             }
             else
             {
-                user.CarPreferences = null; // No preferences selected
+                user.CarPreferences = null; 
             }
 
             var updateResult = await _userManager.UpdateAsync(user);
@@ -267,7 +262,6 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                 await _userManager.UpdateAsync(user);
             }
 
-            // Save changes to the user entity again to include profile picture update
             updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
             {
@@ -275,7 +269,6 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                 return RedirectToPage();
             }
 
-            // Refresh sign-in and display success message
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

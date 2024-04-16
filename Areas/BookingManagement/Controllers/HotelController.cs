@@ -16,9 +16,8 @@ namespace Assignment1.Areas.BookingManagement.Controllers
     public class HotelController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager; // Inject UserManager
+        private readonly UserManager<ApplicationUser> _userManager; 
 
-        // Inject ApplicationDbContext and UserManager
         public HotelController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -31,7 +30,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             var hotels = _context.Hotels.ToList();
 
-            // Apply other filters
             if (!string.IsNullOrEmpty(name))
             {
                 hotels = hotels.Where(h => h.Name.Contains(name)).ToList();
@@ -41,11 +39,9 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 hotels = hotels.Where(h => h.Location.Contains(location)).ToList();
             }
 
-            // Filter based on user's hotel preferences
             var currentUser = await _userManager.GetUserAsync(User);
-            var hotelPreferences = currentUser.HotelPreferences; // Assuming it's HotelPreferences based on your model
+            var hotelPreferences = currentUser.HotelPreferences; 
 
-            // Apply sorting
             ViewData["PriceSortParm"] = string.IsNullOrEmpty(sortOrder) ? "price_asc" : "";
             switch (sortOrder)
             {
@@ -198,9 +194,8 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         public async Task<IActionResult> GetBestMatches()
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            var hotelPreferences = currentUser.HotelPreferences.Split(','); // Assuming preferences are comma-separated
+            var hotelPreferences = currentUser.HotelPreferences.Split(','); 
 
-            // Filter hotels based on user preferences
             var matchingHotels = _context.Hotels
                 .Where(hotel => hotelPreferences.Any(pref => hotel.Amenities.Contains(pref)))
                 .ToList();

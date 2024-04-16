@@ -1,6 +1,5 @@
 ﻿
 $(document).ready(function () {
-    // Function to load car listings
     function loadCarListings(data) {
         var html = '';
         var rowOpen = false;
@@ -11,9 +10,9 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
                 if (i % columnsPerRow === 0) {
                     if (rowOpen) {
-                        html += '</div>'; // Close the previous row
+                        html += '</div>'; 
                     }
-                    html += '<div class="row">'; // Open a new row
+                    html += '<div class="row">'; 
                     rowOpen = true;
                 }
                 html += '<div class="col-sm-4 mb-4"  >';
@@ -59,13 +58,12 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'json',
             success: function (data) {
-                // Clear previous results before appending new ones
                 $('#bestMatchesContainer').empty();
 
                 if (data && data.length > 0) {
                     var cardHtml = `<h3>Best Matches Based On Your Preferences!</h3>
                                 <hr />
-                                <div class="row">`; // Open a row container
+                                <div class="row">`; 
                     for (var i = 0; i < data.length; i++) {
                         var carRental = data[i];
 
@@ -88,7 +86,7 @@ $(document).ready(function () {
                             </div>
                         </div>`;
                     }
-                    cardHtml += `</div>`; // Close the row container
+                    cardHtml += `</div>`;
                     $('#bestMatchesContainer').append(cardHtml);
                 } else {
                     $('#bestMatchesContainer').html('<p>No Car Rentals available.</p>');
@@ -101,7 +99,6 @@ $(document).ready(function () {
     }
     $(document).on('click', '.details-button', function () {
         var carRentalId = $(this).data('id');
-        // Redirect to details page with the selected car rental ID
         window.location.href = '/BookingManagement/CarRental/' + carRentalId;
     });
     function loadInitialListings() {
@@ -120,7 +117,6 @@ $(document).ready(function () {
         event.preventDefault();
         var formData = $(this).serialize();
 
-        // Make AJAX request
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),

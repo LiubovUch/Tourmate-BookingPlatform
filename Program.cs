@@ -10,18 +10,9 @@ using Microsoft.Extensions.Logging;
 using Assignment1.Areas.BookingManagement.Filters;
 
 
-/*
-Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();*/
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -42,11 +33,8 @@ builder.Services.AddSingleton<IEmailSender, EmailSender>();
 var app = builder.Build();
 app.UseMiddleware<LoggingMiddleware>();
 app.UseMiddleware<ErrorHandlingMiddleware>();
-// Configure the HTTP request pipeline.
-/*if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}*/
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
