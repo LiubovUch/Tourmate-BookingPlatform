@@ -8,10 +8,7 @@
 }
 
 <style>
-    .flight-details {
-        min-height: 300px;
-        overflow-y: auto;
-    }
+
 
     .flight-image {
         width: 420px;
@@ -22,6 +19,7 @@
     }
 </style>
 
+
 <h1>Flight Details</h1>
 
 <div class="row">
@@ -30,23 +28,60 @@
     </div>
     <div class="col-md-8">
         <div class="card">
-            <div class="card-body flight-details">
-                <h3 class="card-title">Airline: @Model.Airline</h3>
-                <p class="card-text"><strong>Departure Location:</strong> @Model.DepartureLocation</p>
-                <p class="card-text"><strong>Arrival Location:</strong> @Model.ArrivalLocation</p>
-                <p class="card-text"><strong>Departure Time:</strong> @Model.DepartureTime.ToString("yyyy-MM-dd HH:mm")</p>
-                <p class="card-text"><strong>Arrival Time:</strong> @Model.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</p>
-                <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
-                @if (isAdmin)
-                {
-                    <div class="btn-group" role="group" aria-label="Flight Actions">
-                        <a asp-action="Edit" asp-route-id="@Model.FlightId" class="btn btn-light">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@Model.FlightId" class="btn btn-outline-danger" style="margin-left:20px;">Delete</a>
-                    </div>
-                }
+            <div class="col-md-8" id="flightDetailsContainer">
             </div>
+
+            @if (isAdmin)
+            {
+                <div role="group" aria-label="Flight Actions" style="margin-left:20px">
+                    <button id="edit-flight-button" class="btn btn-outline-secondary edit-flight">Edit</button>
+                    <a id="delete-flight-button" asp-action="Delete" asp-route-id="@Model.FlightId" style="margin-left:10px" class="btn btn-outline-danger ml-2">Delete</a>
+                </div>
+            }
+
         </div>
     </div>
+</div>
+
+<div id="edit-flight-form-container" style="display:none; width:500px; margin: 0 auto;">
+    <form id="edit-flight-form" data-flight-id="@Model.FlightId">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="FlightId" />
+        <div class="form-group">
+            <label asp-for="Airline" class="control-label">Airline:</label>
+            <input asp-for="Airline" class="form-control" />
+            <span asp-validation-for="Airline" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DepartureLocation" class="control-label">Departure Location:</label>
+            <input asp-for="DepartureLocation" class="form-control" />
+            <span asp-validation-for="DepartureLocation" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ArrivalLocation" class="control-label">Arrival Location:</label>
+            <input asp-for="ArrivalLocation" class="form-control" />
+            <span asp-validation-for="ArrivalLocation" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DepartureTime" class="control-label">Departure Time:</label>
+            <input asp-for="DepartureTime" class="form-control" />
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ArrivalTime" class="control-label">Arrival Time:</label>
+            <input asp-for="ArrivalTime" class="form-control" />
+            <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="control-label">Price:</label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group text-center" style="margin-top: 20px;">
+            <button type="button" class="btn btn-primary submit-edit">Save</button>
+            <button type="button" class="btn btn-light cancel-edit">Cancel</button>
+        </div>
+    </form>
 </div>
 
 @using (Html.BeginForm("Index", "Booking", FormMethod.Post))
@@ -58,6 +93,96 @@
     <div class="text-center mt-2">
         <a asp-action="Index" class="btn btn-light">Back to List</a>
     </div>
-
 }
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var flightId = '@Model.FlightId';
+            function getFlightDetails(flightId) {
+                $.ajax({
+                    url: '@Url.Action("GetFlightData", "Flight")',
+                    type: 'GET',
+                    data: { id: flightId },
+                    success: function (flight) {
+                        renderFlightDetails(flight);
+                    },
+                    error: function () {
+                        console.log('Error fetching flight details.');
+                    }
+                });
+            }
+            function formatDate(date) {
+                var d = new Date(date);
+                var day = d.getDate();
+                var month = d.getMonth() + 1;
+                var year = d.getFullYear();
+                if (day < 10) {
+                    day = '0' + day;
+                }
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                return day + '-' + month + '-' + year;
+            }
 
+            function formatTime(time) {
+                var d = new Date(time);
+                var hours = d.getHours();
+                var minutes = d.getMinutes();
+                if (hours < 10) {
+                    hours = '0' + hours;
+                }
+                if (minutes < 10) {
+                    minutes = '0' + minutes;
+                }
+
+                return hours + ':' + minutes;
+            }
+            // Function to render flight details
+            function renderFlightDetails(flight) {
+                var flightDetailsHtml = `
+                                            <div class="flight-details" style="margin-left: 20px; margin-top: 20px;">
+                                        <p><strong>Airline:</strong> ${flight.airline}</p>
+                                        <p><strong>Departure Location:</strong> ${flight.departureLocation}</p>
+                                        <p><strong>Arrival Location:</strong> ${flight.arrivalLocation}</p>
+                                        <p><strong>Departure Time:</strong> ${formatDate(flight.departureTime)} ${formatTime(flight.departureTime)}</p>
+                                        <p><strong>Arrival Time:</strong> ${formatDate(flight.arrivalTime)} ${formatTime(flight.arrivalTime)}</p>
+                                        <p><strong>Price:</strong> ${flight.price}</p>
+                                    </div>`;
+
+                $('#flightDetailsContainer').html(flightDetailsHtml);
+            }
+            getFlightDetails(flightId);
+
+            // Event handler for edit flight button
+            $('#edit-flight-button').click(function () {
+                $('#edit-flight-form-container').show();
+                getFlightDetails(flightId);
+            });
+
+            // Event handler for cancel edit button
+            $('.cancel-edit').click(function () {
+                $('#edit-flight-form-container').hide();
+                getFlightDetails(flightId);
+            });
+
+            // Event handler for save button
+            $('.submit-edit').click(function () {
+                var formData = $('#edit-flight-form').serialize();
+                $.ajax({
+                    url: '@Url.Action("Update", "Flight")',
+                    type: 'POST',
+                    data: formData,
+                    success: function (result) {
+                        getFlightDetails(flightId);
+                        $('#edit-flight-form-container').hide();
+                        getFlightDetails(flightId);
+                    },
+                    error: function () {
+                        console.log('Error updating flight.');
+                    }
+                });
+            });
+        });
+    </script>
+}

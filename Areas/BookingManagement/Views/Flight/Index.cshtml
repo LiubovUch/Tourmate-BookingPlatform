@@ -54,7 +54,7 @@ else
         <h2 class="title">Flight List</h2>
     </div>
 }
-<form asp-controller="Flight" asp-action="Index" method="get">
+<form id="flightSearchForm" asp-controller="Flight" asp-action="Index" method="get">
     <div class="row">
         <div class="input-group">
             <input type="text" class="form-control" id="airline" name="airline" placeholder="Airline">
@@ -66,31 +66,15 @@ else
     </div>
 </form>
 
-@if (Model.Any())
-{
-    <div class="row mt-4">
-        @foreach (var flight in Model)
-        {
-            <div class="col-sm-4 mb-4" margin-top="40px">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Airline: @flight.Airline</h5>
-                        <p class="card-text"> From @flight.DepartureLocation <i class="fa-solid fa-route"></i> to @flight.ArrivalLocation</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fa-solid fa-plane-departure"></i> Departure Time: @flight.DepartureTime.ToString("yyyy-MM-dd HH:mm")</li>
-                        <li class="list-group-item"><i class="fa-solid fa-plane-arrival"></i> Arrival Time: @flight.ArrivalTime.ToString("yyyy-MM-dd HH:mm")</li>
-                        <li class="list-group-item"><i class="fa-solid fa-wallet"></i> Price: $@flight.Price</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a asp-action="Details" asp-route-id="@flight.FlightId" class="btn btn-success rounded-pill" style="width:30%;">Details</a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-}
-else
+@if (!Model.Any())
 {
     <p>No flights available.</p>
+}
+
+<div id="flightSearchResults" class="row mt-4">
+</div>
+
+
+@section Scripts {
+    <script src="~/js/flightListings.js"></script>
 }

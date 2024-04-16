@@ -70,10 +70,6 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Profile Picture")]
             public byte[] ProfilePicture { get; set; }
 
-            // Add properties for travel preferences
-            [Display(Name = "Travel Preferences")]
-            public string TravelPreferences { get; set; }
-
             [Display(Name = "Frequent Flyer Number")]
             public string FrequentFlyerNumber { get; set; }
 
@@ -91,7 +87,6 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
             var firstName = user.FirstName;
             var lastName = user.LastName;
             var profilePicture = user.ProfilePicture;
@@ -111,7 +106,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                 HotelPreferences = hotelPreferences, // Add this line
                 CarPreferences = carPreferences, // Add this line
             };
-            
+
 
         }
 
@@ -123,26 +118,15 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            
 
-            // Load user's existing preferences
             var frequentFlyerNumber = user.FrequentFlyerNumber;
             var carPreferences = user.CarPreferences;
-            var hotelPreferences = user.HotelPreferences;
-
-            // Populate the Input model with existing preferences
+            var hotelPreferences = user.HotelPreferences; ;
             Input = new InputModel
             {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
-                Username = await _userManager.GetUserNameAsync(user),
-                CarPreferences = carPreferences,  
-                HotelPreferences= hotelPreferences,
                 FrequentFlyerNumber = frequentFlyerNumber,
-                // Populate other Input model properties as needed
-            };
 
+            };
             Input.FrequentFlyerNumber = frequentFlyerNumber;
 
             // Pre-select checkboxes based on existing preferences
@@ -153,9 +137,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
 
             if (!string.IsNullOrEmpty(carPreferences))
             {
-                // Split the string into individual preferences
                 var preferences = carPreferences.Split(',', StringSplitOptions.RemoveEmptyEntries);
-                // Add each preference to the list
                 foreach (var preference in preferences)
                 {
                     ((List<string>)ViewData["CheckedCarPreferences"]).Add(preference.Trim());
@@ -164,19 +146,15 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
 
             if (!string.IsNullOrEmpty(hotelPreferences))
             {
-                // Split the string into individual preferences
                 var preferences = hotelPreferences.Split(',', StringSplitOptions.RemoveEmptyEntries);
-                // Add each preference to the list
                 foreach (var preference in preferences)
                 {
                     ((List<string>)ViewData["CheckedHotelPreferences"]).Add(preference.Trim());
                 }
             }
-
-            // Refresh the sign-in and return the page
-            await _signInManager.RefreshSignInAsync(user);
+            UserChangeLimitStatusMessage = $"You can change your name {user.UsernameChangeLimit} more times";
+            await LoadAsync(user);
             return Page();
-
         }
 
 
@@ -249,22 +227,35 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
             {
                 user.LastName = Input.LastName;
             }
-
-            // Update additional properties
             user.CarPreferences = Input.CarPreferences;
             user.HotelPreferences = Input.HotelPreferences;
-            //user.TravelPreferences = Input.TravelPreferences;
-            //user.FrequentFlyerNumber = Input.FrequentFlyerNumber;
+            var hotelPreferences = Request.Form["Input.HotelPreferences"].Select(p => p).ToArray();
+            if (hotelPreferences.Length > 0)
+            {
+                user.HotelPreferences = string.Join(",", hotelPreferences);
+            }
+            else
+            {
+                user.HotelPreferences = null; // No preferences selected
+            }
 
-            // Save changes to the user entity
+            // Process car preferences
+            var carPreferences = Request.Form["Input.CarPreferences"].Select(p => p).ToArray();
+            if (carPreferences.Length > 0)
+            {
+                user.CarPreferences = string.Join(",", carPreferences);
+            }
+            else
+            {
+                user.CarPreferences = null; // No preferences selected
+            }
+
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
             {
                 StatusMessage = "Unexpected error when trying to update user profile.";
                 return RedirectToPage();
             }
-
-            // Handle profile picture update
             if (Request.Form.Files.Count > 0)
             {
                 IFormFile file = Request.Form.Files.FirstOrDefault();
@@ -273,6 +264,7 @@ namespace Assignment1.Areas.Identity.Pages.Account.Manage
                     await file.CopyToAsync(dataStream);
                     user.ProfilePicture = dataStream.ToArray();
                 }
+                await _userManager.UpdateAsync(user);
             }
 
             // Save changes to the user entity again to include profile picture update

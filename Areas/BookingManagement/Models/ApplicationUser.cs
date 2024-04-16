@@ -11,7 +11,7 @@ public class ApplicationUser : IdentityUser
 
     // Set default values for preferences
     public string FrequentFlyerNumber { get; set; } = "None";
-    public string CarPreferences { get; set; } = "None";
-    public string HotelPreferences { get; set; } = "None";
+    public string? CarPreferences { get; set; } = "None";
+    public string? HotelPreferences { get; set; } = "None";
 
 }

@@ -5,6 +5,7 @@
     ViewData["Title"] = "Car Rental List";
     var currentUser = await UserManager.GetUserAsync(User);
     bool isAdmin = await UserManager.IsInRoleAsync(currentUser, "Admin");
+    var matchingCarRentals = Model.Where(carRental => currentUser.CarPreferences.Split(',').Any(pref => carRental.CarType.Contains(pref))).ToList();
 }
 
 <img src="https://media.assets.ansira.net/websites/content/cblt-ms-nissan//39f414af448c484db13471de169ff43c_1598x686.jpg" alt="Car Rental Image" class="car-rental-image">
@@ -52,11 +53,12 @@ else
     </div>
 }
 
-<form asp-controller="CarRental" asp-action="Index" method="get">
+<form id="carRentalSearchForm" asp-controller="CarRental" asp-action="Index" method="get">
     <div class="row">
         <div class="input-group">
             <input type="text" class="form-control" id="carModel" name="carModel" placeholder="Search by Model">
             <input type="text" class="form-control" id="rentalCompany" name="company" placeholder="Search by Company">
+            <input type="text" class="form-control" id="carType" name="carType" placeholder="Search by Car Type">
             <select class="form-control" id="sortOrder" name="sortOrder">
                 <option value="">Order By Price</option>
                 <option value="price_asc">Low to High</option>
@@ -67,9 +69,6 @@ else
     </div>
 </form>
 
-@{
-    var matchingCarRentals = Model.Where(c => c.CarType.Contains(currentUser.CarPreferences)).ToList();
-}
 @if (!Model.Any())
 {
     <p>No Car Rentals available.</p>
@@ -79,55 +78,18 @@ else
     <div class="row mt-4">
         @if (matchingCarRentals.Any())
         {
-            <div class="col-12">
-                <h3>Best Matches</h3>
-                <hr />
-            </div>
-            @foreach (var carRental in matchingCarRentals)
-            {
-                <div class="col-sm-4 mb-4" margin-top="40px">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Car Model: @carRental.CarModel</h5>
-                            <p class="card-text">Rental Company: @carRental.RentalCompany</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><i class="fa-solid fa-hourglass-start"></i> Car Type: @carRental.CarType</li>
-                            <li class="list-group-item"><i class="fa-solid fa-hourglass-start"></i> Availability Start Date: @carRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</li>
-                            <li class="list-group-item"><i class="fa-solid fa-hourglass-end"></i> Availability End Date: @carRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</li>
-                            <li class="list-group-item"><i class="fa-solid fa-wallet"></i> Price: $@carRental.Price</li>
-                        </ul>
-                        <div class="card-body text-center">
-                            <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-success rounded-pill" style="width:30%;">Details</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-
-        <div class="col-12">
-            <h3>All Car Rentals</h3>
-            <hr />
-        </div>
-        @foreach (var carRental in Model)
-        {
-            <div class="col-sm-4 mb-4" margin-top="40px">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Car Model: @carRental.CarModel</h5>
-                        <p class="card-text">Rental Company: @carRental.RentalCompany</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="fa-solid fa-hourglass-start"></i> Car Type: @carRental.CarType</li>
-                        <li class="list-group-item"><i class="fa-solid fa-hourglass-start"></i> Availability Start Date: @carRental.AvailabilityStartDate.ToString("yyyy-MM-dd")</li>
-                        <li class="list-group-item"><i class="fa-solid fa-hourglass-end"></i> Availability End Date: @carRental.AvailabilityEndDate.ToString("yyyy-MM-dd")</li>
-                        <li class="list-group-item"><i class="fa-solid fa-wallet"></i> Price: $@carRental.Price</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a asp-action="Details" asp-route-id="@carRental.CarRentalId" class="btn btn-success rounded-pill" style="width:30%;">Details</a>
-                    </div>
-                </div>
+            <div id="bestMatchesContainer">
+                @foreach (var carRental in matchingCarRentals)
+                {
+                }
             </div>
         }
     </div>
+}
+
+<div id="carRentalSearchResults">
+</div>
+
+@section Scripts {
+    <script src="~/js/carListings.js"></script>
 }

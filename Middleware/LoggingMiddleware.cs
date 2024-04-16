@@ -1,34 +1,39 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Net;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
-public class ErrorHandlingMiddleware
+public class LoggingMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger<ErrorHandlingMiddleware> _logger;
+    private readonly ILogger<LoggingMiddleware> _logger;
 
-    public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
+    public LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddleware> logger)
     {
         _next = next;
         _logger = logger;
     }
 
-    public async Task Invoke(HttpContext context)
+    public async Task InvokeAsync(HttpContext context)
     {
-        try
-        {
-            await _next(context);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred");
+        // Log the incoming request
+        await LogRequestAsync(context.Request);
 
-            context.Response.ContentType = "text/plain";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        // Call the next middleware in the pipeline
+        await _next(context);
+    }
 
-            await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
-        }
+    private async Task LogRequestAsync(HttpRequest request)
+    {
+        request.EnableBuffering();
+        var requestBodyStream = new MemoryStream();
+        await request.Body.CopyToAsync(requestBodyStream);
+        requestBodyStream.Seek(0, SeekOrigin.Begin);
+        var requestBodyText = await new StreamReader(requestBodyStream).ReadToEndAsync();
+
+        _logger.LogInformation($"Request: {request.Method} {request.Path} \n Body: {requestBodyText}");
+        request.Body.Seek(0, SeekOrigin.Begin);
     }
 }

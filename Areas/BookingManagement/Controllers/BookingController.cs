@@ -2,12 +2,14 @@
 using Assignment1.Areas.BookingManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Assignment1.Areas.BookingManagement.Filters;
 
 namespace Assignment1.Areas.BookingManagement.Controllers
 {
     [Area("BookingManagement")]
     [Authorize]
     [Route("[area]/[controller]/[action]")]
+    [ServiceFilter(typeof(LoggingFilter))]
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;

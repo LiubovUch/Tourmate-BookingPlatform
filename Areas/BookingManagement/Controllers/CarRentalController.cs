@@ -1,4 +1,5 @@
-﻿using Assignment1.Areas.BookingManagement.Models;
+﻿using Assignment1.Areas.BookingManagement.Filters;
+using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,11 +12,12 @@ using System.Threading.Tasks;
 namespace Assignment1.Areas.BookingManagement.Controllers
 {
     [Area("BookingManagement")]
-    [Route("[area]/[controller]")]
+    [Route("[area]/[controller]/")]
+    [ServiceFilter(typeof(LoggingFilter))]
     public class CarRentalController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager; // Inject UserManager
+        private readonly UserManager<ApplicationUser> _userManager;
 
         // Inject ApplicationDbContext and UserManager
         public CarRentalController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
@@ -23,15 +25,14 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             _context = context;
             _userManager = userManager;
         }
-
-        public async Task<IActionResult> Index(string carModel, string company, string sortOrder)
+        [Authorize]
+        public async Task<IActionResult> Index(string carModel, string company, string sortOrder, string carType)
         {
             var carRentals = _context.CarRentals.ToList();
 
             // Filter based on user's car preferences
-            var currentUser = await _userManager.GetUserAsync(User); // Use _userManager to access GetUserAsync
-            var carPreferences = currentUser.CarPreferences; // Assuming it's CarPreferences based on your model
-            
+            var currentUser = await _userManager.GetUserAsync(User);
+            var carPreferences = currentUser.CarPreferences;
 
 
             // Apply other filters
@@ -42,6 +43,10 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             if (!string.IsNullOrEmpty(company))
             {
                 carRentals = carRentals.Where(c => c.RentalCompany.Contains(company)).ToList();
+            }
+            if (!string.IsNullOrEmpty(carType))
+            {
+                carRentals = carRentals.Where(c => c.CarType.Contains(carType)).ToList();
             }
 
             // Apply sorting
@@ -69,7 +74,6 @@ namespace Assignment1.Areas.BookingManagement.Controllers
 
 
         [HttpGet("{id:int}")]
-        [Authorize]
         public IActionResult Details(int id)
         {
             var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
@@ -88,12 +92,14 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Create")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost("Create")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CarRental carRental)
         {
@@ -107,6 +113,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Edit/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var carRental = _context.CarRentals.Find(id);
@@ -118,6 +125,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpPost("Edit/{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("CarRentalId,CarModel,RentalCompany,Price,AvailabilityStartDate,AvailabilityEndDate")] CarRental carRental)
         {
@@ -150,6 +158,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Delete/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var carRental = _context.CarRentals.FirstOrDefault(c => c.CarRentalId == id);
@@ -161,6 +170,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpPost("DeleteConfirmed")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int carRentalId)
         {
@@ -178,5 +188,29 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             return _context.CarRentals.Any(c => c.CarRentalId == id);
         }
+
+        [HttpGet("GetBestMatches")]
+        public async Task<IActionResult> GetBestMatches(string carModel, string company, string carType, string sortOrder)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            var carPreferences = currentUser.CarPreferences.Split(',');
+
+            // Check if search criteria are empty
+            if (string.IsNullOrEmpty(carModel) && string.IsNullOrEmpty(company) && string.IsNullOrEmpty(carType) && string.IsNullOrEmpty(sortOrder))
+            {
+                // Filter car rentals based on user preferences
+                var matchingCarRentals = _context.CarRentals
+                    .Where(carRental => carPreferences.Any(pref => carRental.CarType.Contains(pref)))
+                    .ToList();
+
+                return Json(matchingCarRentals);
+            }
+            else
+            {
+                // Return an empty array to indicate that no best matches are available
+                return Json(new CarRental[0]);
+            }
+        }
+
     }
 }

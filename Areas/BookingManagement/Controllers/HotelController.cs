@@ -1,4 +1,5 @@
-﻿using Assignment1.Areas.BookingManagement.Models;
+﻿using Assignment1.Areas.BookingManagement.Filters;
+using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
 using Assignment1.Enum;
 using Microsoft.AspNetCore.Authorization;
@@ -11,6 +12,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
 {
     [Area("BookingManagement")]
     [Route("[area]/[controller]")]
+    [ServiceFilter(typeof(LoggingFilter))]
     public class HotelController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,8 +24,9 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             _context = context;
             _userManager = userManager;
         }
-  
+
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index(string name, string location, string sortOrder)
         {
             var hotels = _context.Hotels.ToList();
@@ -60,6 +63,12 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             {
                 return Json(hotels);
             }
+            //------MIDDLEWARE TESTING -------
+
+            /*            if (currentUser!=null) 
+                        {
+                            throw new Exception("This is a test exception");
+                        }*/
 
             return View(hotels);
         }
@@ -185,5 +194,26 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             return _context.Hotels.Any(e => e.HotelId == id);
         }
+        [HttpGet("GetBestMatches")]
+        public async Task<IActionResult> GetBestMatches()
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            var hotelPreferences = currentUser.HotelPreferences.Split(','); // Assuming preferences are comma-separated
+
+            // Filter hotels based on user preferences
+            var matchingHotels = _context.Hotels
+                .Where(hotel => hotelPreferences.Any(pref => hotel.Amenities.Contains(pref)))
+                .ToList();
+
+            return Json(matchingHotels);
+        }
+
+        [HttpGet("GetHotels")]
+        public async Task<IActionResult> GetHotels()
+        {
+            var hotels = await _context.Hotels.ToListAsync();
+            return Json(hotels);
+        }
+
     }
 }

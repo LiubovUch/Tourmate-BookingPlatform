@@ -7,6 +7,7 @@ using Assignment1.Areas.BookingManagement.Models;
 using Serilog;
 using Serilog.Events;
 using Microsoft.Extensions.Logging;
+using Assignment1.Areas.BookingManagement.Filters;
 
 
 /*
@@ -24,10 +25,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 // builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddScoped<LoggingFilter>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -39,11 +40,22 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 var app = builder.Build();
-
+app.UseMiddleware<LoggingMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+/*if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+}*/
+if (app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseStatusCodePagesWithRedirects("/ErrorPage/{0}");
+    app.UseHsts();
+}
+else
+{
+    app.UseDeveloperExceptionPage();
 }
 
 using var scope = app.Services.CreateScope();

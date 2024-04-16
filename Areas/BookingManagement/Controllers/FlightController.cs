@@ -1,4 +1,5 @@
-﻿using Assignment1.Areas.BookingManagement.Models;
+﻿using Assignment1.Areas.BookingManagement.Filters;
+using Assignment1.Areas.BookingManagement.Models;
 using Assignment1.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
 {
     [Area("BookingManagement")]
     [Route("[area]/[controller]")]
+    [ServiceFilter(typeof(LoggingFilter))]
     public class FlightController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,9 +20,9 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             _context = context;
         }
-
         [HttpGet]
-        public IActionResult Index(string airline, string departureLocation, string arrivalLocation, DateTime? departureTime)
+        [Authorize]
+        public async Task<IActionResult> Index(string airline, string departureLocation, string arrivalLocation, DateTime? departureTime)
         {
             var flights = _context.Flights.AsQueryable();
 
@@ -41,9 +43,28 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 flights = flights.Where(f => f.DepartureTime.Date == departureTime.Value.Date);
             }
 
-            var filteredFlights = flights.ToList();
+            var filteredFlights = await flights.ToListAsync(); // Make sure to await ToListAsync
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(filteredFlights);
+            }
+
             return View(filteredFlights);
         }
+        [HttpGet("GetFlightData")]
+        public async Task<IActionResult> GetFlightData(int id)
+        {
+            var flight = await _context.Flights.FirstOrDefaultAsync(f => f.FlightId == id);
+
+            if (flight == null)
+            {
+                return NotFound();
+            }
+
+            return Json(flight);
+        }
+
 
         [HttpGet("{id:int}")]
         [Authorize]
@@ -58,12 +79,14 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Create")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost("Create")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Flight flight)
         {
@@ -78,6 +101,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpGet("Edit/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var flight = _context.Flights.Find(id);
@@ -85,10 +109,10 @@ namespace Assignment1.Areas.BookingManagement.Controllers
             {
                 return NotFound();
             }
-            return View(flight);
+            return PartialView("_Edit", flight);
         }
-
         [HttpPost("Edit/{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("FlightId,Airline,DepartureLocation,ArrivalLocation,DepartureTime,ArrivalTime,Price")] Flight flight)
         {
@@ -103,6 +127,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                 {
                     _context.Update(flight);
                     _context.SaveChanges();
+                    return PartialView("_FlightDetails", flight); // Return partial view with updated flight details
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,12 +140,46 @@ namespace Assignment1.Areas.BookingManagement.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(flight);
+            return PartialView("_Edit", flight);
+        }
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update(Flight flight)
+        {
+            if (ModelState.IsValid)
+            {
+                // Retrieve the flight from the database
+                var existingFlight = await _context.Flights.FirstOrDefaultAsync(f => f.FlightId == flight.FlightId);
+
+                if (existingFlight == null)
+                {
+                    return NotFound();
+                }
+
+                // Update the flight details
+                existingFlight.Airline = flight.Airline;
+                existingFlight.DepartureLocation = flight.DepartureLocation;
+                existingFlight.ArrivalLocation = flight.ArrivalLocation;
+                existingFlight.DepartureTime = flight.DepartureTime;
+                existingFlight.ArrivalTime = flight.ArrivalTime;
+                existingFlight.Price = flight.Price;
+
+                // Save changes to the database
+                _context.Entry(existingFlight).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+
+                // Optionally, you can return a JSON response indicating success
+                return Json(new { success = true });
+            }
+            else
+            {
+                // If model state is not valid, return validation errors
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpGet("Delete/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
@@ -132,6 +191,7 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         }
 
         [HttpPost("DeleteConfirmed")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int flightId)
         {
@@ -149,5 +209,14 @@ namespace Assignment1.Areas.BookingManagement.Controllers
         {
             return _context.Flights.Any(f => f.FlightId == id);
         }
+
+        [HttpGet("GetFlights")]
+        public async Task<IActionResult> GetFlights()
+        {
+            var flights = await _context.Flights.ToListAsync();
+            return Json(flights);
+        }
+
+
     }
 }
